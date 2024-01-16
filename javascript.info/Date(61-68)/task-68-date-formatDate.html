@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function formatDate(date) {
+            const lastTime = new Date() - date;
+            if (lastTime < 1000) return "right now";
+            if (lastTime >= 1000 && lastTime < 1000 * 60) return (
+            Math.floor(lastTime / 1000) + " sec. ago"
+            );
+            if (lastTime >= 1000 * 60 && lastTime < 1000 * 60 * 60) return (
+            Math.floor(lastTime / 1000 / 60) + " min. ago"
+            );
+
+            function insertZero(value) {
+                return value % 10 == value ?
+                "0" + value : value;
+            }
+
+            return insertZero(date.getDate()) + "." + insertZero(date.getMonth() + 1) + "." +
+             String(date.getFullYear()).slice(2) + " " + date.getHours() + ":" + insertZero(date.getMinutes())
+        }
+
+        alert(formatDate(new Date(new Date - 1))); // "прямо зараз"
+
+        alert(formatDate(new Date(new Date - 30 * 1000))); // "30 сек. назад"
+
+        alert(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 хв. назад"
+
+        // вчорашня дата, як 31.12.16 20:00
+        alert(formatDate(new Date(new Date - 86400 * 1000)));
+    </script>
+</body>
+
+</html>

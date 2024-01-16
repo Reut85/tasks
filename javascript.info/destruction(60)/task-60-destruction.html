@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function topSalary(salaries) {
+            if (!Object.keys(salaries).length) return null;
+            let max = 0, name;
+            for (let [key, value] of Object.entries(salaries)) {
+                if (value > max) {
+                    max = value;
+                    name = key;
+                }
+            }
+            return name
+        }
+
+        let obj = {
+            "Іван": 100,
+            "Петро": 300,
+            "Марія": 250
+        };
+
+        alert(topSalary(obj))
+    </script>
+</body>
+
+</html>

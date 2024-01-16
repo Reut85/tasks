@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-_-getElement-querySelector</title>
+</head>
+<body>
+    <form name="search">
+        <label> 
+            Search the site: 
+            <input type="text" name="search">
+        </label>
+        <input type="submit" value="Search!">
+    </form> 
+    <hr>
+    <form name="search-person"> 
+         Search the visitors: 
+        <table id="age-table">
+            <tbody> 
+                <tr>
+                    <td>Age:</td>
+                    <td  id="age-list">
+                        <label>
+                            <input type="radio" name="age" value="young">
+                            less than 18
+                        </label>
+                        <label>
+                            <input type="radio" name="age" value="mature">
+                                18-50
+                        </label>
+                        <label>
+                            <input type="radio" name="age" value="senior">
+                            more than 50
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Addotionally:</td>
+                    <td>
+                        <input type="text" name="info[0]">
+                        <input type="text" name="info[1]">
+                        <input type="text" name="info[2]">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="search!">
+    </form>
+    <script>
+        let ageTable = document.getElementById('age-table');
+        alert(ageTable.innerHTML);
+        let labels = ageTable.querySelectorAll('label');
+        for (let i = 0; i < labels.length; i ++) {
+            alert(labels[i].innerHTML)
+        }
+        let age = ageTable.getElementsByTagName('td');
+        alert(age[0].innerHTML);
+        let search = document.querySelector('form[name="search"]');
+        alert(search.innerHTML)
+        let firstInput = search.querySelectorAll('input:first-child');
+        alert(firstInput.innerHTML);
+        let lastInput = search.querySelectorAll('input:last-child');
+        alert(lastInput.innerHTML)
+    </script>
+</body>
+</html>

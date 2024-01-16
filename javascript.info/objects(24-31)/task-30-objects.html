@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-30-objects</title>
+</head>
+<body>
+    <script>
+        function Calculator() {
+            this.read = function() {
+                this.a = +prompt('Введіть значення а - ', '');
+                this.b = +prompt('Введіть значення b - ', '');
+            };
+            this.sum = function() {
+                return this.a + this.b
+            };
+            this.mul = function() {
+                return this.a * this.b
+            }
+        }
+
+        let calculator = new Calculator();
+        calculator.read();
+
+        alert( "Sum=" + calculator.sum() );
+        alert( "Mul=" + calculator.mul() );
+    </script>
+</body>
+</html>

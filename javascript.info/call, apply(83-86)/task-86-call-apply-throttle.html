@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Функція для створення дросельної обгортки
+        function throttle(func, delay) {
+            let lastCallTime = 0;
+            let timeoutId;
+
+            // Повертаємо обгортку
+            return function (...args) {
+                const currentTime = Date.now();
+
+                // Показуємо перше значення одразу
+                if (lastCallTime === 0) {
+                    func.apply(this, args);
+                    lastCallTime = currentTime;
+                } else {
+                    // Час, через який обгортка повернеться
+                    const timeSinceLastCall = currentTime - lastCallTime;
+                    if (timeSinceLastCall >= delay) {
+                        func.apply(this, args);
+                        lastCallTime = currentTime;
+                    } else {
+                        // Встановлюємо таймер для останнього виклику
+                        clearTimeout(timeoutId);
+                        timeoutId = setTimeout(() => {
+                            func.apply(this, args);
+                            lastCallTime = Date.now();
+                        }, delay - timeSinceLastCall);
+                    }
+                }
+            };
+        }
+
+
+
+        // моє рішення написав бінг, яке не пройшло половини тестів, зі складністю цього завдання автори перебрали 
+
+        // рішення javascript.info
+
+        //function throttle(func, ms) {
+
+        //     let isThrottled = false,
+        //     savedArgs,
+        //     savedThis;
+        //     function wrapper() {
+
+        //         if (isThrottled) { // (2)
+        //             savedArgs = arguments;
+        //             savedThis = this;
+        //             return;
+        //         }
+        //         isThrottled = true;
+
+        //         func.apply(this, arguments); // (1)
+
+        //         setTimeout(function () {
+        //             isThrottled = false; // (3)
+        //             if (savedArgs) {
+        //                 wrapper.apply(savedThis, savedArgs);
+        //                 savedArgs = savedThis = null;
+        //             }
+        //         }, ms);
+        //     }
+
+        //     return wrapper;
+        // }
+
+        function f(a) {
+            console.log(a);
+        }
+
+        // f1000 передає виклики до f максимум один раз на 1000 мс
+        let f1000 = throttle(f, 1000);
+
+        f1000(1); // показує 1
+        f1000(2); // (обмеження, 1000 мс ще не закінчилися)
+        f1000(3); // (обмеження, 1000 мс ще не закінчилися)
+
+        // коли 1000 ms time out ...
+        // ...вивід 3, проміжне значення 2 було проігноровано
+    </script>
+</body>
+
+</html>

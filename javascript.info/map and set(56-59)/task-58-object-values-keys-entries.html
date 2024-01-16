@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sumSalaries(salaries) {
+            if (salaries === 0) return 0;
+            let valuesSalaries = Object.values(salaries);
+            let sum = 0;
+            for (let el of valuesSalaries) {
+                sum += el;
+            }
+            return sum
+        }
+
+        let salaries = {
+            "Іван": 100,
+            "Петро": 300,
+            "Марія": 250
+        };
+
+        alert(sumSalaries(salaries)); // 650
+    </script>
+</body>
+
+</html>

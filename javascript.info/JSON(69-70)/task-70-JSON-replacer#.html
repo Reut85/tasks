@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let room = {
+            number: 23
+        };
+
+        let meetup = {
+            title: "Конференція",
+            occupiedBy: [{ name: "Іван" }, { name: "Аліса" }],
+            place: room
+        };
+
+        // циклічне посилання
+        room.occupiedBy = meetup;
+        meetup.self = meetup;
+
+        alert(JSON.stringify(meetup, function replacer(key, value) {
+            /* ваш код */
+            if (value == meetup && key != "") return undefined;
+            else return value 
+        }));
+    </script>
+</body>
+
+</html>

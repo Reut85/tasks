@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function f(a, b) {
+            alert(a + b);
+        }
+
+        // Варіант бінга(ші)
+        Function.prototype.defer = function (delay) {
+            var func = this;
+            return function () {
+                var args = arguments;
+                setTimeout(function () {
+                    func.apply(null, args);
+                }, delay);
+            }
+        }
+
+        // Варіант javascript.info
+        // Function.prototype.defer = function (ms) {
+        //     let f = this;
+        //     return function (...args) {
+        //         setTimeout(() => f.apply(this, args), ms);
+        //     }
+        // };
+
+
+        f.defer(1000)(1, 2); // показує 3 після 1 секунди
+    </script>
+</body>
+
+</html>

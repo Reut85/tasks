@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function makeArmy() {
+            let shooters = [];
+
+            for (let i = 0; i < 10; i ++) {
+                let shooter = function () { // створюємо функцію стрільця,
+                    alert(i); // що має показувати свій номер
+                };
+                shooters.push(shooter); // додаємо її до масиву
+            }
+            // ...і повертаємо масив стрільців
+            return shooters;
+        }
+
+        let army = makeArmy();
+
+        // всі стрільці показують 10 замість своїх номерів 0, 1, 2, 3...
+        army[0](); // 10 від стрільця за номером 0
+        army[1](); // 10 від стрільця за номером 1
+        army[2](); // 10 ...і так далі.
+    </script>
+</body>
+
+</html>

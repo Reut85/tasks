@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function printListRecursion(list) {
+            if (list.next == null) {
+                alert(list.value);
+                return;
+            }
+            alert(list.value);
+            list = printListRecursion(list.next);
+            return;
+        }
+
+        // Варіант javascript.info
+        // function printList(list) {
+
+        //     alert(list.value); // виведіть поточний елемент
+
+        //     if (list.next) {
+        //         printList(list.next); // зробіть те ж саме для решти списку
+        //     }
+
+        // }
+
+        printList(list);
+
+        let list = {
+            value: 1,
+            next: {
+                value: 2,
+                next: {
+                    value: 3,
+                    next: {
+                        value: 4,
+                        next: null
+                    }
+                }
+            }
+        };
+        alert('printListRecursion :')
+        printListRecursion(list)
+
+        function printListCycle(list) {
+            while (list.next != null) {
+                alert(list.value);
+                list = list.next;
+            }
+            alert(list.value)
+        }
+
+        // Варіант javascript.info
+        // function printList(list) {
+        //     let tmp = list;
+
+        //     while (tmp) {
+        //         alert(tmp.value);
+        //         tmp = tmp.next;
+        //     }
+
+        // }
+
+        alert('printListCycle :')
+        printListCycle(list); 
+    </script>
+</body>
+
+</html>

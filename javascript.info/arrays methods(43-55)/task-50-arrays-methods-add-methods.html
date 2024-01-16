@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-50</title>
+</head>
+
+<body>
+    <script>
+        let ivan = { name: "Іван", surname: "Іванко", id: 1 };
+        let petro = { name: "Петро", surname: "Петренко", id: 2 };
+        let mariya = { name: "Марія", surname: "Мрійко", id: 3 };
+
+        let users = [ivan, petro, mariya];
+
+        let usersMapped = users.map((el) => {
+            el = Object.assign({}, el);  // el = {...el};
+            el.fullName = el.name + ' ' + el.surname,
+            delete el.name,
+            delete el.surname
+            return el
+        })/* ... ваш код ... */
+
+        /*
+        usersMapped = [
+          { fullName: "Іван Іванко", id: 1 },
+          { fullName: "Петро Петренко", id: 2 },
+          { fullName: "Марія Мрійко", id: 3 }
+        ]
+        */
+
+        alert(usersMapped[0].id) // 1
+        alert(usersMapped[0].fullName) // Іван Іванко
+        // usersMapped.forEach(obj => {
+        //     for (let key in obj) {
+        //         console.log(key + ': ' + obj[key]);
+        //     }
+        // });
+    </script>
+</body>
+
+</html>

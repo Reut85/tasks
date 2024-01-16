@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-55-arrays-methods-groupById</title>
+</head>
+
+<body>
+    <script>
+        function groupById(arr) {
+            let object = {};
+            for (let i = 0; i < arr.length; i++) {
+                let key = arr[i].id;
+                object[key] = arr[i]
+            }
+
+            function printKeysAndValues(obj, parentKey = '') {
+                for (let key in obj) {
+                    if (typeof obj[key] === 'object' && obj[key] !== null) {
+                        console.log(parentKey + key + ': {');
+                        printKeysAndValues(obj[key], '  ');
+                        console.log('}');
+                    } else {
+                        console.log(parentKey + key + ': ' + obj[key]);
+                    }
+                }
+            }
+
+            printKeysAndValues(object)
+        }
+
+        // Варіант javascript.info
+
+        // function groupById(array) {
+        //     return array.reduce((obj, value) => {
+        //         obj[value.id] = value;
+        //         return obj;
+        //     }, {})
+        // }
+
+        let users = [
+            { id: 'іван', name: "Іван Іванко", age: 20 },
+            { id: 'ганна', name: "Ганна Іванко", age: 24 },
+            { id: 'петро', name: "Петро Петренко", age: 31 },
+        ];
+
+        let usersById = groupById(users);
+
+
+        /*
+        // після виклику функції ви повинні отримати:
+        
+        usersById = {
+          іван: {id: 'іван', name: "Іван Іванко", age: 20},
+          ганна: {id: 'ганна', name: "Ганна Іванко", age: 24},
+          петро: {id: 'петро', name: "Петро Петренко", age: 31},
+        }
+        */
+    </script>
+</body>
+
+</html>

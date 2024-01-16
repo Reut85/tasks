@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getWeekDay(date) {
+            const day = date.getDay();
+            switch (day) {
+                case 0: return "SU";
+                case 1: return "MO";
+                case 2: return "TU";
+                case 3: return "WE";
+                case 4: return "TH";
+                case 5: return "FR";
+                case 6: return "SA";
+                
+            }
+        }
+
+        let date = new Date(2012, 0, 3);  // 3 січня 2012
+        alert(getWeekDay(date));        // повинно виводити "ВТ"
+    </script>
+</body>
+
+</html>

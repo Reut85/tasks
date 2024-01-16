@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getDateAgo(date, days) {
+            const template = new Date(date);
+            template.setDate(template.getDate() - days)
+            return template.getDate()
+        }
+
+        let date = new Date(2015, 0, 2);
+
+        alert(getDateAgo(date, 1)); // 1, (1 січня 2015)
+        alert(getDateAgo(date, 2)); // 31, (31 грудня 2014)
+        alert(getDateAgo(date, 365)); // 2, (2 січня 2014)
+    </script>
+</body>
+
+</html>

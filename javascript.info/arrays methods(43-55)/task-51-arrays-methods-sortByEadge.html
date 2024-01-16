@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-51</title>
+</head>
+
+<body>
+    <script>
+        function sortByAge(arr) {
+            arr.sort((a, b) => a.age - b.age)
+        }
+
+        let ivan = { name: "Іван", age: 25 };
+        let petro = { name: "Петро", age: 30 };
+        let mariya = { name: "Марія", age: 28 };
+
+        let arr = [petro, ivan, mariya];
+
+        sortByAge(arr);
+
+        // now: [ivan, mariya, petro]
+        alert(arr[0].name); // Іван
+        alert(arr[1].name); // Марія
+        alert(arr[2].name); // Петро
+    </script>
+</body>
+
+</html>

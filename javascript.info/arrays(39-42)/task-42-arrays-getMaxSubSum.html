@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-42-arrays-getMaxSubSum</title>
+</head>
+<body>
+    <script>
+        
+        function getMaxSubSum(arr) {
+            let maxSum = 0;
+
+            function lessNull(arr, n) {
+                if (arr[n] == undefined) return -1
+                if (arr[n] > 0) return n
+                return lessNull(arr, n + 1)
+            }
+
+            if (lessNull(arr, 0) == -1) return maxSum;
+
+            for (let i = lessNull(arr, 0); i < arr.length + 1; i ++) {
+                let sum = 0;
+
+                for (let j = i - 1; j < arr.length; j ++) {
+                    sum += arr[j]
+                    if (maxSum < sum) maxSum = sum
+                }
+
+            }
+            return maxSum
+        }
+        
+        console.log(getMaxSubSum([-1, 2, 3, -9])) // 5
+        console.log(getMaxSubSum([2, -1, 2, 3, -9]))// 6
+        console.log(getMaxSubSum([-1, 2, 3, -9, 11])) // 11
+        console.log(getMaxSubSum([-2, -1, 1, 2])) // 3
+        console.log(getMaxSubSum([100, -9, 2, -3, 5])) // 100
+        console.log(getMaxSubSum([1, 2, 3])) // 6
+        console.log(getMaxSubSum([-1, -2, -3]))// 0
+    </script>
+</body>
+</html>

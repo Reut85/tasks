@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let array = [];
+        function printListReverseRecursion(list) {
+            if (list.next == null) {
+                array.push(list.value);
+                Array.from(array).reverse().forEach((x) => alert(x));
+                return;
+            }
+            array.push(list.value);
+            printListReverseRecursion(list.next);
+        }
+
+        // метод javascript.info
+        // function printReverseList(list) {
+
+        //     if (list.next) {
+        //         printReverseList(list.next);
+        //     }
+
+        //     alert(list.value);
+        // }
+
+        // printReverseList(list);
+
+        let list = {
+            value: 1,
+            next: {
+                value: 2,
+                next: {
+                    value: 3,
+                    next: {
+                        value: 4,
+                        next: null
+                    }
+                }
+            }
+        };
+
+        alert('printListReverseRecursion :');
+        printListReverseRecursion(list)
+
+        function printListReverseCycle(list) {
+            let array = [];
+            let pieces = list;
+            while (true) {
+                if (pieces.next == null) {
+                    array.push(pieces.value);
+                    break;
+                }
+                array.push(pieces.value);
+                pieces = pieces.next;
+            }
+            Array.from(array).reverse().forEach((x) => alert(x));
+        }
+
+        // метод javascript.info
+        // function printReverseList(list) {
+        //     let arr = [];
+        //     let tmp = list;
+
+        //     while (tmp) {
+        //         arr.push(tmp.value);
+        //         tmp = tmp.next;
+        //     }
+
+        //     for (let i = arr.length - 1; i >= 0; i--) {
+        //         alert(arr[i]);
+        //     }
+        // }
+
+        printReverseList(list);
+
+
+
+        alert('printListReverseCycle :');
+
+
+        printListReverseCycle(list);
+    </script>
+</body>
+
+</html>

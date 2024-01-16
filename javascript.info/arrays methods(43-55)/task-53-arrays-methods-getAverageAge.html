@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-53-arrays-methods-getAverageAge</title>
+</head>
+
+<body>
+    <script>
+        function getAverageAge(users) {
+            return (users[0].age + users[1].age + users[2].age) / 3
+        }
+
+        // Варіант javascript.info для будь-якої кількості елементів масиву
+
+        // function getAverageAge(users) {
+        //     return users.reduce((prev, user) => prev + user.age, 0) / users.length;
+        // }
+
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 29 };
+
+        let arr = [john, pete, mary];
+
+        alert(getAverageAge(arr)); // (25 + 30 + 29) / 3 = 28
+    </script>
+</body>
+
+</html>

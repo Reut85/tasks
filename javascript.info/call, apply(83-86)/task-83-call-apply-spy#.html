@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function spy(func) {
+            function wrapper(...args) {
+                wrapper.calls.push(args);
+                return func.apply(this, args);
+            }
+            wrapper.calls = [];
+            return wrapper;
+        }
+
+        function work(a, b) {
+            alert(a + b); // працює як довільна функція або метод
+        }
+
+        work = spy(work);
+
+        work(1, 2); // 3
+        work(4, 5); // 9
+
+        for (let args of work.calls) {
+            alert('виклик:' + args.join()); // "виклик:1,2", "виклик:4,5"
+        }
+    </script>
+</body>
+
+</html>

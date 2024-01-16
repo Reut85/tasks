@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-41-arrays-sumInput</title>
+</head>
+<body>
+    <script>
+        function sumInput() {
+            let arr = [];
+            let sum = 0;
+            while (1) {
+                let data =  prompt("Enter the data: ", "");
+                if (data === "" || data === null || isNaN(data)) break;
+                arr.push(data);
+            }
+            for (let i = 0; i < arr.length; i ++) {
+                sum += +arr[i];
+            }
+            return sum
+        }
+        alert(sumInput())
+    </script>
+</body>
+</html>

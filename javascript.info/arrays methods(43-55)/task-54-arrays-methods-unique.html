@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-54-arrays-methods-unique</title>
+</head>
+
+<body>
+    <script>
+        function unique(arr) {
+            /* ваш код */
+            let newArr = [];
+            newArr.push(arr[0])
+            for (let i = 1; i < arr.length; i ++) {
+                if (newArr.includes(arr[i])) {
+                    continue
+                }
+                newArr.push(arr[i])
+            }
+            return newArr
+        }
+
+        let strings = ["Привіт", "Світ", "Привіт", "Світ",
+            "Привіт", "Привіт", "Світ", "Світ", ":-O"
+        ];
+
+        alert(unique(strings)); // Привіт, Світ, :-O
+    </script>
+</body>
+
+</html>

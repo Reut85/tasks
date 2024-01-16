@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-82-setTimeout-setInterval-printNumbers</title>
+</head>
+
+<body>
+    <script>
+        // function printNumbers(from, to) {
+        //     let second = from;
+        //     let timerID = setTimeout(function tick() {
+        //         timerID = setTimeout(tick, 1000);
+        //         if (second == to) return;
+        //         console.log(second);
+        //         second ++;
+        //     }, 1000)
+
+        // }
+
+        function printNumbers(from, to) {
+            let timerID = setInterval(() => {
+                alert(from ++);
+                if (from >= to) clearInterval(timerID);
+            }, 2000);
+        }
+
+        printNumbers(6, 17);
+    </script>
+</body>
+
+</html>

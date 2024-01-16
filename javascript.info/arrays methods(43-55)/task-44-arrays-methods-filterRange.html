@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-43-arrays-methods-filterRange</title>
+</head>
+<body>
+    <script>
+        function filterRange(arr, a, b) {
+            return arr.reduce((list, item) => {
+                if ((item <= b) && (item >= a)) list.push(item);
+               
+                return list
+            }, [])
+        }
+
+        let arr = [5, 3, 8, 1];
+
+        let filtered = filterRange(arr, 1, 4);
+
+        alert( filtered ); // 3,1 (відфільтровані значення)
+
+        alert( arr ); // 5,3,8,1 (не змінюється)
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let users = [
+            { name: "Іван", age: 20, surname: "Іванов" },
+            { name: "Петро", age: 18, surname: "Петров" },
+            { name: "Енн", age: 19, surname: "Гетевей" }
+        ];
+
+        function byField(str) {
+            return ((a, b) => a[str] > b[str] ? 1 : -1)
+        }
+
+        users.sort(byField('name'));
+        console.log('Print to the name :')
+        users.forEach(user => {
+            console.log(`Ім'я: ${user.name}, Прізвище: ${user.surname}, Вік: ${user.age}`);
+        });
+        users.sort(byField('age'));
+        console.log('Print to the age :')
+        users.forEach(user => {
+            console.log(`Ім'я: ${user.name}, Прізвище: ${user.surname}, Вік: ${user.age}`);
+        });
+    </script>
+</body>
+
+</html>

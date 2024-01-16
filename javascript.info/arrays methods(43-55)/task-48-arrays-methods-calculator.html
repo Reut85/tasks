@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-48-arrays-methods-calculator</title>
+</head>
+
+<body>
+    <script>
+        function Calculator() {
+            this.methods = {
+                '+': (a, b) => a + b,
+                '-': (a, b) => a - b
+            };
+            this.addMethod = function (name, func) {
+                this.methods[name] = func;
+            }
+            this.calculate = function (str) {
+                let [a, operator, b] = str.split(' ');
+                a = Number(a);
+                b = Number(b);
+                if (!this.methods[operator]) {
+                    throw new Error(`Unknown operator: ${operator}`);
+                }
+                return this.methods[operator](a, b);
+            }
+        }
+        let powerCalc = new Calculator;
+        powerCalc.addMethod("*", (a, b) => a * b);
+        powerCalc.addMethod("/", (a, b) => a / b);
+        powerCalc.addMethod("**", (a, b) => a ** b);
+
+        let result = powerCalc.calculate("2 ** 3");
+        alert(result); 
+    </script>
+</body>
+
+</html>

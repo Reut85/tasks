@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-38-truncate</title>
+</head>
+<body>
+    <script>
+        function truncate(str, maxlength) {
+            if (str.length > maxlength) {
+                str = str.slice(0, maxlength - 1) + '\u2026'
+            }
+            return str
+        }
+
+        alert(truncate("Що я хотів би розповісти на цю тему:", 20));
+        alert(truncate("Всім привіт!", 20))
+    </script>
+</body>
+</html>

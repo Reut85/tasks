@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-13-or-and</title>
+</head>
+<body>
+    <script>
+        const login = prompt('Введіть логін', '');
+        
+        if (login == 'Адмін') {
+            let password = prompt('Введіть пароль', '');
+            if (password == 'Володар') {
+                alert('Ласкаво просимо!')
+            } else if (password == '' || password == null) {
+                alert('Скасовано')
+            } else alert('Невірний пароль')
+        } else if (login == '' || login == null) {
+            alert('Скасовано');
+        } else alert('Я вас не знаю')
+    </script>
+</body>
+</html>

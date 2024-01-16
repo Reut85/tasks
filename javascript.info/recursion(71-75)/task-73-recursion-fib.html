@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fib(n) {
+            let sum = 1;
+            let prevSum = 1;
+            let nextSum
+            for (let i = 2; i < n; i ++) {
+                nextSum = prevSum + sum;
+                prevSum = sum;
+                sum = nextSum;
+            }
+            return nextSum
+        }
+
+        alert(fib(3)); // 2
+        alert(fib(7)); // 13
+        alert(fib(77)); // 5527939700884757
+    </script>
+</body>
+
+</html>

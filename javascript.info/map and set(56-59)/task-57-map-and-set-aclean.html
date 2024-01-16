@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-57-map-and-set-aclean</title>
+</head>
+
+<body>
+    <script>
+        function aclean(arr) {
+            let array = arr.map(element => element.toLowerCase());
+            let map = new Map();
+            for (let word of array) {
+                let sorted = [...word].sort().join('');
+                if (!map.has(sorted)) {
+                    map.set(sorted, word);
+                }
+            }
+            return Array.from(new Set(array.map(word => map.get([...word].sort().join('')))));
+        }
+        
+
+        let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+        alert(aclean(arr)); // "nap,teachers,ear" or "PAN,cheaters,era"
+    </script>
+</body>
+
+</html>

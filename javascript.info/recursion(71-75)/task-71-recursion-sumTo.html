@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Використання циклу
+        function sumToCycle(n) {
+            let sum = 0;
+            for (let i = 0; i < n + 1; i ++) {
+                sum += i
+            }
+            return sum
+        }
+
+        alert('sumtoCycle = ' + sumToCycle(100))
+
+        // Використання рекурсії
+        function sumToRecursion(n) {
+            return (n == 1) ? n : n + sumToRecursion(n - 1)
+        }
+
+        alert('sumToRecursion = ' + sumToRecursion(100))
+
+        // Використання формули арифметичної прогресії
+        function sumToFormula(n) {
+            return n * (n + 1) / 2
+        }
+
+        alert('sumToFormula = ' + sumToFormula(100))
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-31-objects
+    </title>
+</head>
+<body>
+    <script>
+        function Accumulator(startingValue) {
+            this.value = startingValue;
+            this.read = function() {
+                let a = +prompt('Введіть збільшуюче значення ', '');
+                this.value += a
+            }
+        }
+
+        let accumulator = new Accumulator(1); // початкове значення 1
+
+        accumulator.read(); // додає введене користувачем значення
+        accumulator.read(); // додає введене користувачем значення
+
+        alert(accumulator.value); // показує суму цих значень
+    </script>
+</body>
+</html>

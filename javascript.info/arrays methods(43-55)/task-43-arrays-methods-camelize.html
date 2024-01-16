@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-43-arrays-methods-camelize</title>
+</head>
+<body>
+    <script>
+        function camelize(str) {
+            if (str === '') return str;
+            let flag = true;
+            if (str[0] === '-') flag = false;
+            let finalString = str.split('-').map((i) => i.charAt(0).toUpperCase() + i.slice(1)).join('');
+            if (flag == true) return finalString[0].toLowerCase() + finalString.slice(1);
+            if (flag == false) return finalString[0].toUpperCase() + finalString.slice(1);
+        }
+        console.log(camelize("background-color"));
+        console.log(camelize("list-style-image"));
+        console.log(camelize("-webkit-transition"));
+        console.log(camelize("background-color") == 'backgroundColor');
+        console.log(camelize("list-style-image") == 'listStyleImage');
+        console.log(camelize("-webkit-transition") == 'WebkitTransition');
+    </script>
+</body>
+</html>
