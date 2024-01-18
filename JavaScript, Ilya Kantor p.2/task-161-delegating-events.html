@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    Кнопка для удаления:
+    <button class="remove-button">[x]</button>
+    <div>
+        <div class="pane">
+            <h3>Лошадь</h3>
+            <p>Домашняя лошадь — животное семейства непарнокопытных,одомашненный и единственный сохранившийся подвид дикойлошади, вымершей в дикой природе, за исключениемнебольшой популяции лошади Пржевальского.</p>
+        </div>
+        <div class="pane">
+            <h3>Осел</h3>
+            <p>Домашний осёл или ишак — одомашненный подвид дикогоосла, сыгравший важную историческую роль в развитиихозяйства и культуры человека. Все одомашненные ослыотносятся к африканским ослам</p>
+        </div>
+        <div class="pane">
+            <h3>Корова, а также пара слов о диком быке, о волах ио тёлках.</h3>
+            <p>Коро́ва — самка домашнего быка, одомашненного подвидадикого быка, парнокопытного жвачного животного семействаполорогих. Самцы вида называются быками, молодняк —телятами, кастрированные самцы — волами. Молодых (допервой стельности) самок называют тёлками.</p>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        
+        function removeP(event) {  
+             var target = event.target;   
+             // цикл двигается вверх от target к родителям до document.body  
+             while (target != document.body) { 
+                 if (target.className == 'remove-button') {       // нашли элемент, который нас интересует! 
+                     target.parentNode.parentNode.remove();
+                     // вытираем его "родителя" div с классом "pane"
+                     return;
+                 }
+                 target = target.parentNode
+             }
+        }
+        
+        const button = document.getElementsByClassName('remove-button');
+        const block = document.getElementsByClassName('pane');
+        for (const el of block) {
+            const h3 = el.children[0];
+            const cloneButton = button[0].cloneNode(true);
+            cloneButton.style.float = "right";
+            h3.appendChild(cloneButton);
+        }
+        document.body.addEventListener('click', removeP);
+        document.body.firstChild.remove();
+        document.body.children[0].remove();
+    </script>
+</body>
+</html> 

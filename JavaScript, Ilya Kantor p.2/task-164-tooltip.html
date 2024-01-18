@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css" media="all">
+        body {
+            height: 2000px;
+            /*Подсказка должна работать независимо от прокрутки*/
+        }
+        /* Ваши стили */
+        .tooltip {
+            border: 1px solid black;
+            border-radius: 50%;
+            position: absolute;
+            color: black;
+            background-color: cyan;
+            z-index: 1000;
+            padding: 5px;
+            text-align: center;
+            font: italic 14px Georgia;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя
+    </p>
+    <p>
+        ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя
+    </p>
+    <button data-tooltip="подсказка длиннее, чем сам элемент">Короткая кнопка</button>
+    <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+    <p>
+        Прокрутите страницу, чтобы ссылки были вверху и проверте, правильно ли показываются подсказки
+    </p>
+    <script type="text/javascript" charset="utf-8">
+        const button = document.querySelector("button");
+        // динамічна функція перевірки координат елемента батон у разі використання скролу
+        function buttonPlace() {
+            return button.getBoundingClientRect();
+        }
+        
+        function touchAppear(e) {
+            let target = e.target;
+            let id = target.getAttribute("data-tooltip");
+            if (!id) return;
+            let elem = document.createElement("q");
+            elem.innerHTML = id;
+            elem.className = "tooltip";
+            // перевірка на місцезнаходження батонів, і коректування щодо них появи повідомлення
+            if (buttonPlace().top > 30) elem.style.top = buttonPlace().top - 50 + "px";
+            if (buttonPlace().top < 30) elem.style.top = buttonPlace().top + 20 + pageYOffset + "px";
+            button.appendChild(elem);
+            // коректування повідомлення по осі х
+            elem.style.left = e.clientX - elem.offsetWidth/2 + "px";
+        }
+        
+        function touchHidden(e) {
+            let target = e.target;
+            let id = target.getAttribute("data-tooltip");
+            if (!id) return;
+            const elem = document.querySelector("q");
+            elem.remove();
+        }
+        
+        document.body.addEventListener("mouseover", touchAppear);
+        document.body.addEventListener("mouseout", touchHidden);
+    </script>
+</body>
+</html>

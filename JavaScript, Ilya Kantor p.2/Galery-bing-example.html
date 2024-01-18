@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Стиль сітки з чотирма колонками */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin: 20px;
+    }
+
+    /* Стиль зображень у сітці */
+    .gallery-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    /* Стиль контейнера для збільшеного зображення */
+    .container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Стиль збільшеного зображення */
+    .container-img {
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    /* Стиль тексту під збільшеним зображенням */
+    .container-text {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      font-size: 20px;
+    }
+
+    /* Стиль кнопки закриття */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Галерея зображень</title>
+</head>
+<body>
+  <h1>Галерея зображень</h1>
+  
+  <!-- Сітка з чотирма колонками -->
+  <div class="gallery">
+    <img src="https://js.cx/gallery/img1-lg.jpg" alt="Природа" class="gallery-img" onclick="showImage(this);">
+    <img src="https://js.cx/gallery/img2-lg.jpg" alt="Сніг" class="gallery-img" onclick="showImage(this);">
+    <img src="https://js.cx/gallery/img3-lg.jpg" alt="Гори" class="gallery-img" onclick="showImage(this);">
+    <img src="https://js.cx/gallery/img4-lg.jpg" alt="Вогні" class="gallery-img" onclick="showImage(this);">
+  </div>
+
+  <!-- Контейнер для збільшеного зображення -->
+  <div class="container">
+    <!-- Кнопка закриття -->
+    <span class="close-btn" onclick="closeImage();">×</span>
+    <!-- Збільшене зображення -->
+    <img id="container-img" class="container-img">
+    <!-- Текст під збільшеним зображенням -->
+    <div id="container-text" class="container-text"></div>
+  </div>
+
+  <script>
+    // Функція для показу збільшеного зображення
+    function showImage(img) {
+      // Отримати контейнер, збільшене зображення та текст
+      var container = document.querySelector(".container");
+      var containerImg = document.getElementById("container-img");
+      var containerText = document.getElementById("container-text");
+      // Використати той самий src у збільшеному зображенні, що і у зображенні, на яке клікнули
+      containerImg.src = img.src;
+      // Використати значення атрибута alt клікабельного зображення як текст під збільшеним зображенням
+      containerText.innerHTML = img.alt;
+      // Показати контейнер (схований за допомогою CSS)
+      container.style.display = "flex";
+    }
+
+    // Функція для закриття збільшеного зображення
+    function closeImage() {
+      // Отримати контейнер
+      var container = document.querySelector(".container");
+      // Сховати контейнер
+      container.style.display = "none";
+    }
+  </script>
+</body>
+</html>

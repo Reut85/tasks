@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-165-delegation-reset-by-reference</title>
+    <style type="text/css" media="all">
+        #contents {
+            padding: 5px;
+            border: 1px green solid;
+        }
+    </style>
+</head>
+<body>
+    <fieldset id="contents">
+        <legend>#contents</legend>
+        <p>
+            Как насчет почитать
+            <a href="http://wikipedia.org">Википедию</a>
+            , или посетить 
+            <a href="http://w3.org">
+                <i>W3.org</i>
+            </a> и узнать про современные стандарты?
+        </p>
+    </fieldset>
+    <script type="text/javascript" charset="utf-8">
+        // Отримати батьківський елемент
+        var container = document.getElementById("contents");
+
+        // Додати обробник подій кліку
+        container.addEventListener("click", function(event) {
+          // Отримати елемент, на який клікається
+          var tag = event.target;
+          // Перевірити, чи це елемент <a> з атрибутом href
+          if (tag.nodeName == "A" || tag.nodeName == 'I') {
+            // Запитати у користувача, чи хоче він покинути сторінку
+            let ask = prompt('Хотите ли вы покинуть эту страницу?', "");
+            // Якщо користувач не погодився, скасувати стандартну поведінку посилання
+            if (ask === null) event.preventDefault();
+            // Може бути пiдвантаження з сервера, генерація інтерфейсу і т.п.
+          }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>животные
+            <ul>
+                <li>млекопитающие
+                    <ul>
+                        <li>коровы</li>
+                        <li>ослы</li>
+                        <li>собаки</li>
+                        <li>тигры</li>
+                    </ul>
+                </li>
+                <li>другие
+                    <ul>
+                        <li>змеи</li>
+                        <li>птицы</li>
+                        <li>ящерицы</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>рыбы
+            <ul>
+                <li>аквариумные
+                    <ul>
+                        <li>гуппи</li>
+                        <li>скалярии</li>
+                    </ul>
+                </li>
+                <li>морские
+                    <ul>
+                        <li>морская форель</li>
+                    </ul>
+                </li>      
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript" charset="utf-8">
+        
+        function hidden(e) {
+            let target = e.target;
+            while(target != document.body) {
+                if (target.tagName = ("li") && target.children[0] && !target.className) {
+                    target.style.fontWeight = "900";
+                    target.children[0].style.display = "none";
+                    target.classList.add("none");
+                    return;
+                }
+                if (target.className = "none") {
+                    target.style.fontWeight = "400";
+                    target.children[0].style.display = "block";
+                    target.classList.remove("none");
+                    return;    
+                }
+                target = target.parentNode
+            }
+        }
+        
+        document.body.addEventListener("click", hidden);
+    </script>
+</body>
+</html>

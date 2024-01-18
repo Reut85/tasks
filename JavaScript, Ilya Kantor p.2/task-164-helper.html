@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>                                 
+    <button data‐toggle‐id="subscribe‐mail">   Показать форму подписки </button> 
+    <form id="subscribe‐mail" hidden>   Ваша почта: <input type="email"> </form>
+    <script> 
+        document.onclick = function(event) {  
+            var target = event.target;  
+            var id = target.getAttribute('data‐toggle‐id'); 
+            if (!id) return;   
+            var elem = document.getElementById(id);
+            elem.hidden = !elem.hidden;
+        }; 
+    </script>
+</body>
+</html>
