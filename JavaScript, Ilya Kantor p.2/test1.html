@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--<style>
+         Стиль для зовнішнього вікна, який робить його нерухомим і затемненим */
+        /*#outer {
+            position: fixed;
+            width: 60%;
+            height: 20%;
+            border: 5px solid black;
+            border-radius: 50px;
+            margin: 17%;
+            overflow-x: scroll;
+        }
+
+        /* Стиль для внутрішнього вікна, який робить його центрованим і оформленим */
+        /*#inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Стиль для зображення, який робить його адаптивним до розміру вікна */
+        /*img {
+            /*display: block;
+            width: 100%;
+            height: auto;
+        }*/
+    </style>
+</head>
+<body>
+
+    <!-- Зовнішнє вікно, яке містить внутрішнє вікно -->
+    <!--<div id="outer">
+        <!-- Внутрішнє вікно, яке містить зображення -->
+        <!--<div>
+            <!-- Зображення, яке ви хочете показати -->
+            <!--<ul id="inner">
+                <li><img src="https://js.cx/carousel/1.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/2.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/3.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/4.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/5.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/6.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/7.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/8.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/9.png" alt=""></li>
+                <li><img src="https://js.cx/carousel/10.png" alt=""></li>
+            </ul>
+        </div>
+    </div>-->
+    <button class="arrow"><=</button>
+    <button class="arrow">=></button>
+    <script type="text/javascript" charset="utf-8">
+        const arrow = document.getElementsByClassName("arrow");
+        //alert(arrow[0].textContent)
+        document.body.style.cssText = "display: flex; justify-content: space-between; align-items: center"
+        arrow.style.cssText = ""
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-149-pageYOffset-polyfill</title>
+    <style type="text/css" media="all">
+        body {
+            width: 100px;
+            border: 5px solid blue;
+            color: blue; 
+            padding: 10px;
+            margin: 0 auto; 
+            overflow: auto; 
+    
+        }
+    </style>
+</head>
+<body>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium temporibus velit repellat veniam a, laborum neque quaerat natus necessitatibus omnis doloremque consectetur animi, nobis modi recusandae! Quis vero, vitae id.
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro, mollitia eaque deserunt nam itaque odio voluptate laboriosam, amet tenetur voluptatibus sint veritatis at modi voluptatum maiores aliquam sapiente excepturi?</div>
+        <div>Sed dolorem debitis modi. Maiores, eaque consectetur. Nemo, harum tempora fugit quidem at, sed magni, dolore eaque, repellat reiciendis rem vitae ut. Itaque blanditiis, ullam aspernatur dolorem aperiam voluptas asperiores!</div>
+        <div>Eius nisi eum nesciunt non consectetur voluptatem blanditiis repudiandae! Praesentium iste minima voluptas eaque, iure, totam quam pariatur omnis aspernatur modi blanditiis sapiente corporis nisi amet molestias alias ipsa eligendi.</div>
+        <div>Earum eaque, neque possimus! Accusamus hic quisquam ullam, ex alias sequi magnam odio fuga commodi nulla, optio obcaecati deserunt harum, mollitia eum deleniti qui ratione in. Nam nihil suscipit, omnis!</div>
+        <div>Similique cum assumenda nesciunt incidunt eligendi nobis consequuntur porro, quae itaque placeat officiis quos nihil maiores dolorem eum molestiae sit facere aperiam in earum repellendus ipsum accusamus excepturi laborum ipsam.</div>
+        <div>Nam magnam libero dignissimos molestiae officiis in impedit temporibus ullam aut, ut fugit earum, consequuntur aliquam nobis porro numquam corporis ad. Odio, sequi fuga repudiandae, voluptatibus ut ipsum reprehenderit exercitationem.</div>
+        <div>Dignissimos, laborum, nesciunt! Recusandae sed nesciunt corporis at enim tempora velit veniam, ratione earum! Doloremque, voluptatum nesciunt. Provident quam error quos veritatis sapiente odio repellat inventore atque pariatur, maxime quas!</div>
+        <div>Officiis, ipsa! Cum consequatur sed rerum porro magni unde illum praesentium ad eveniet veniam, excepturi reiciendis ipsum optio maiores quaerat sequi soluta. Accusamus recusandae nulla voluptas itaque dolor eaque obcaecati!</div>
+        <div>Voluptas obcaecati reiciendis enim assumenda accusantium doloribus nisi esse quasi ea culpa nihil officia nemo voluptatem dignissimos, at repudiandae sapiente. Magnam distinctio quibusdam consectetur officiis, sit, libero veritatis qui quisquam!</div>
+        <div>Facere natus nihil, voluptas reprehenderit, ipsa error, id eligendi quis quaerat quasi voluptatibus obcaecati ex similique harum magnam optio, commodi eveniet tenetur voluptates recusandae dolores porro in. Quisquam necessitatibus, illum.</div>
+    <script type="text/javascript" charset="utf-8">
+        (function() {
+            if (document.documentElement.pageYYYOffset === undefined) {
+                Object.defineProperty(HTMLElement.prototype, 'pageYYYOffset', {
+                    get: function() {
+                        var html = document.documentElement;
+                        var body = document.body;
+                        var scrollTop = html.scrollTop || body && body.scrollTop || 0;
+                        scrollTop -= html.clientTop;
+                        return scrollTop
+                    }
+                })
+            }
+        })();
+        
+        
+        window.addEventListener('scroll', function() {
+        console.log(window.pageYOffset);
+        console.log(window.pageYOffset + " - scroll of the window, use the pageYOffset");
+        console.log(document.body.scrollTop || document.documentElement.scrollTop + " - scroll of the window, use the scrollTop");
+        console.log(document.body.pageYYYOffset + " - scroll of the body element, use the pageYYYOffset")})
+    </script>
+</body>
+</html>

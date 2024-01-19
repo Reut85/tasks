@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        // Створюємо фігуру, яка буде рухатися
+var shape = document.createElement("div");
+shape.style.width = "100px";
+shape.style.height = "100px";
+shape.style.backgroundColor = "red";
+shape.style.position = "absolute";
+shape.style.left = "0px";
+shape.style.top = "0px";
+
+// Додаємо фігуру до документа
+document.body.appendChild(shape);
+
+// Встановлюємо швидкість руху фігури в пікселях за кадр
+var speed = 2;
+
+// Створюємо функцію, яка буде рухати фігуру
+function moveShape() {
+    // Отримуємо поточну позицію фігури
+    var left = parseInt(shape.style.left);
+    var top = parseInt(shape.style.top);
+
+    // Збільшуємо позицію фігури на швидкість руху
+    left += speed;
+    top += speed;
+
+    // Перевіряємо, чи фігура не вийшла за межі екрана
+    if (left > window.innerWidth - 100) {
+      // Якщо так, то змінюємо напрямок руху на протилежний
+      speed = -speed;
+    }
+    if (top == 0) {
+      // Якщо так, то змінюємо напрямок руху на протилежний
+      speed = -speed;
+    }
+    // Оновлюємо позицію фігури
+    shape.style.left = left + "px";
+    shape.style.top = top + "px";
+
+    // Викликаємо функцію руху фігури знову через 16 мілісекунд
+    // Це створює ілюзію плавного руху
+    setTimeout(moveShape, 5);
+  }
+
+// Запускаємо функцію руху фігури
+moveShape();
+
+    </script>
+</body>
+</html>

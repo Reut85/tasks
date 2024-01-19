@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="task-151-index.css" type="text/css" media="all" />
+    <title>task-151-note-next-to-the-element</title>
+</head>
+<body style="height: 2000px">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, aperiam ut, aliquam libero eum consequuntur quasi ullam reiciendis fuga minima vel, illum dolor voluptatum quam? Animi corporis earum maiores tempora!
+    </p>
+    <blockquote>
+        - Что на завтрак, Беримор?
+        - Овсянка, сер.
+        - А на обед?
+        - Овсянка, сер. 
+        - Ну, а на ужин?
+        - Котлеты, сер.
+        - Уррра!!!
+        - Из овсянки, сер!!!
+    </blockquote>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quod eaque ullam sapiente laboriosam doloremque dolore porro quos velit voluptate suscipit, culpa, in voluptates tempore labore molestiae rerum. Odit, dolores.
+    </p>
+    <script type="text/javascript" charset="utf-8">
+        /**
+         * Позициогирует элемент elem относительно элемента anchor, как указано в position
+         * 
+         * @param {node} anchor Элемент-якорь, относительно которого задана позиция 
+         * @param {string} position Позиция одно из top/right/bottom
+         * @param {node} elem Элемент, который будет позиционирован
+         */
+         
+        function positionAt(anchor, position, elem) {
+            const coord = anchor.getBoundingClientRect();
+            elem.className = 'note';
+            elem.style.position = "absolute";
+            const heightElem = 26;
+            const widthElem = elem.offsetWidth
+            switch (position) {
+                case "top-out":
+                    elem.style.top = (coord.top - heightElem)  + "px";
+                    elem.style.left = coord.left + "px";
+                    break;
+                case "right-out":
+                    elem.style.top = coord.top + "px";
+                    elem.style.left = (coord.right - coord.left + widthElem) + "px";
+                    break;
+                case "bottom-out":
+                    elem.style.top = (coord.bottom + heightElem) + "px";
+                    elem.style.left = coord.left + "px";
+                    break;
+                case "top-in":
+                    elem.style.top = coord.top + "px";
+                    elem.style.left = coord.left + "px";
+                    break;
+                case "right-in":
+                    elem.style.top = coord.top + "px";
+                    elem.style.left = (coord.right - coord.left) + "px";
+                    break;
+                case "bottom-in":
+                    elem.style.top = coord.bottom + "px";
+                    elem.style.left = coord.left + "px";
+                    break;
+                    default: 
+                        elem.style.top = Math.round(coord.bottom/2) + "px";
+                        elem.style.left = coord.left + "px";
+            }
+            elem.innerHTML = "заметка " + position;
+            const clon = elem.cloneNode(true);
+            document.body.appendChild(clon)
+        }
+         
+         /**
+          * Показывает заметку с текстом html на позиции position
+          * относительно элемента anchor
+          */
+           var blockquote = document.querySelector('blockquote');
+           const note = document.createElement('q');
+           // покажет note сверху blockquote
+           positionAt(blockquote, "top-out", note); 
+           // покажет note сверху‐внутри blockquote
+           positionAt(blockquote, "top-in", note);
+           positionAt(blockquote, "right-out", note)
+    </script>
+</body>
+</html>

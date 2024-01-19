@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-141-clock-setInterval</title>
+    <style>
+        input {
+            width: 30%;
+            height: 15%;
+            background: purple;
+            border-radius: 2rem;
+            margin: 2rem;
+            font-Size: 1.5em;
+            font-family: arial;
+            border: solid darkred .4rem;
+        }
+        input:nth-child(1) {
+            color: cyan;
+        }
+        input:nth-child(2) {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <input type="button"
+    onclick="clockStart()"
+    value="Start" />
+    <input type="button"
+    onclick="clockStop()"
+    value="Stop" />
+    <script type="text/javascript" charset="utf-8">
+        //Мой вариант решения задачи
+        /*function clockStart() {
+            this.clock = setInterval( function() {
+                const td = document.createElement('td');
+                const table = document.createElement('table');
+                const construction = document.body;
+                const listTime = [];
+                const listColor = ['red', 'green', 'blue'];
+                let date = new Date();
+                function insertZero(val) {
+                    if (val/10 < 1) val = '0' + val
+                    return val
+                }
+                listTime.push(insertZero(date.getHours()));
+                listTime.push(insertZero(date.getMinutes()));
+                listTime.push(insertZero(date.getSeconds()));
+                let colon = ':';
+                for (let i = 1; i < 3; i ++) {
+                    listTime.splice(i + i - 1, 0, colon);
+                    this.elem = construction.appendChild(table);
+                }
+                for (let i = 0; i < 5; i ++) {
+                    elem.appendChild(td.cloneNode(true)).innerHTML = listTime[i];
+                }
+                for (let i = 0; i < 5; i ++) {
+                    elem.children[i].style.fontSize = '50px';
+                    elem.children[i].style.padding = '0 50%';
+                    if (i % 2) continue;
+                    elem.children[i].style.color = listColor[i/2];
+                }
+                setTimeout(function() {
+                    while(elem.children.length) {
+                        elem.children[0].remove()
+                    }
+                }, 960)
+            }, 1000);
+        }
+        function clockStop() {
+            clearInterval(clock)
+            clock = null;
+        }*/
+        //Вариант Ильи Кантора(с моими импровизациями)
+        const span = document.createElement('span');
+        const div = document.createElement('div');
+        const listColor = ['red', 'green', 'blue'];
+        document.body.appendChild(div)
+        for (let i = 0; i < 5; i ++) {
+            let elem = document.body.appendChild(span.cloneNode(true))
+            elem.style.fontSize = '50px';
+            elem.style.padding = '0 1rem';
+        }
+
+
+        function start() {
+            const date = new Date();
+
+            function insertZero(val) {
+                if (val/10 < 1) val = '0' + val
+                return val
+            }
+
+            const listTime = [];
+            listTime.push(insertZero(date.getHours()));
+            listTime.push(minutes = insertZero(date.getMinutes()));
+            listTime.push(seconds = insertZero(date.getSeconds()));
+            const tag = document.getElementsByTagName('span');
+            for (let i = 0; i < 5; i ++) {
+                if (i % 2 == 1) {
+                    tag[i].innerHTML = ':';
+                    continue;
+                }
+                tag[i].innerHTML = listTime[i/2]
+                tag[i].style.color = listColor[i/2]
+            }
+        }
+
+        const input = document.getElementsByTagName('input');
+
+        function blinking() {
+            const colors = ['red',
+                'yellow',
+                'cyan',
+                'gray'];
+            function randomColor() {
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+            setTimeout(() =>(input[0].style.color = randomColor()), 50);
+            setTimeout(() =>(input[0].style.color = randomColor()), 100);
+            setTimeout(() =>(input[1].style.color = randomColor()), 50);
+            setTimeout(() =>(input[1].style.color = randomColor()), 100);
+        }
+
+        function moveFont() {
+            function randomFont() {
+                return String(.7 * (Math.floor(Math.random() * 2) + 1)) + 'em';
+            }
+            setTimeout(() =>(input[0].style.fontSize = randomFont()), 50);
+            setTimeout(() =>(input[0].style.fontSize = randomFont()), 100);
+            setTimeout(() =>(input[1].style.fontSize = randomFont()), 50);
+            setTimeout(() =>(input[1].style.fontSize = randomFont()), 100);
+        }
+
+        
+        let sound = new Audio('/storage/emulated/0/Download/Треск электрического разряда.mp3')
+        
+
+        let idTime, idBlinking, idMoveFont;
+
+        function clockStart() {
+            idTime = setInterval(start, 1000);
+            start();
+            idBlinking = setInterval(blinking, 200);
+            blinking();
+            idMoveFont = setInterval(moveFont, 100);
+            moveFont();
+            sound.play();
+        }
+        
+        function clockStop() {
+            clearInterval(idTime);
+            idTime = null;
+            clearInterval(idBlinking);
+            idBlinking = null;
+            clearInterval(idMoveFont);
+            idMoveFont = null;
+            sound.pause();
+        }
+    </script>
+</body>
+</html>

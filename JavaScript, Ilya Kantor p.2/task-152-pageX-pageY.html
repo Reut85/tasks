@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-152-pageX-pageY</title>
+</head>
+<body>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero officia aspernatur voluptatibus, magni et minus nemo, deserunt temporibus molestias ratione aut eius tenetur quasi harum ipsam dicta sunt. Quae, dolore!</div>
+    <div>Non inventore incidunt deserunt sunt nobis omnis maiores fugiat harum praesentium laborum reiciendis quaerat eos voluptas dolore nostrum similique aut quasi dolores, debitis, minus animi? Pariatur amet perferendis libero soluta!</div>
+    <div>Provident voluptas, quibusdam maiores iure suscipit sunt quidem explicabo perspiciatis deleniti blanditiis! Sapiente saepe dignissimos enim asperiores amet expedita, aspernatur quia, officiis, inventore, repellendus nobis labore reiciendis neque necessitatibus dolore.</div>
+    <div>Voluptatibus sapiente sunt sit distinctio perferendis. Numquam, facilis. Commodi cupiditate vitae est, minima nostrum temporibus quaerat magni debitis aliquam, deserunt, et earum rerum in fugiat tempore neque laudantium! Quia, harum!</div>
+    <div>Ducimus, optio quas nam quae odio, dicta distinctio, voluptas in id laborum non dolorem possimus temporibus suscipit repudiandae veniam, quibusdam accusamus consequatur sequi. Blanditiis atque quod vero, accusamus, totam aspernatur.</div>
+    <div>Qui, dolore nostrum molestias optio iure nobis? Quam aut consectetur dolorum possimus accusantium perspiciatis ullam sed porro vel, deleniti modi saepe facere consequuntur enim ducimus quia veritatis minima labore mollitia!</div>
+    <div>Perspiciatis accusantium illum, ducimus, laborum a saepe nulla accusamus voluptatibus ea maxime cum suscipit at, ab quis veniam. Repellendus voluptate ea non saepe quam dicta expedita ducimus deleniti laborum omnis.</div>
+    <div>Optio quasi, praesentium recusandae commodi non enim molestiae similique excepturi voluptate adipisci in tempore illum, beatae sunt cumque et, magni, obcaecati repudiandae eum aperiam itaque eos quo fugiat voluptas dolore!</div>
+    <div>Alias commodi aliquam autem minima incidunt, eveniet deserunt error ipsam et sapiente enim accusamus veniam vel consectetur hic, ad illum totam quidem aliquid sed libero dolorem expedita est! Officiis, libero!</div>
+    <div>Nemo, autem aperiam asperiores. Quos, similique iusto sint explicabo quasi dolore aut laboriosam assumenda est quod architecto deserunt molestiae fugit excepturi cum tempore molestias atque qui cupiditate quidem sunt! Mollitia!</div>
+    <script type="text/javascript" charset="utf-8">
+        function getDocumentScroll(elem) {
+            const coord = elem.getBoundingClientRect();
+            return {
+                top: Math.round(coord.top + pageYOffset),
+                bottom: Math.round(coord.bottom + pageYOffset),
+                height: elem.offsetHeight
+            }
+        }
+        
+        const elem = document.body;
+        Object.entries(getDocumentScroll(elem)).forEach(([key,value]) =>{console.log(key + ': ' + value)})
+    </script>
+</body>
+</html>

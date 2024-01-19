@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="task-159-carousel.css" type="text/css" media="all" />
+    <title>Document</title>
+</head>
+<body>
+    <button class="arrow"><=</button>
+    <button class="arrow">=></button>
+    <ul>
+        <li><img src="https://js.cx/carousel/1.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/2.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/3.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/4.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/5.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/6.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/7.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/8.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/9.png" alt=""></li>
+        <li><img src="https://js.cx/carousel/10.png" alt=""></li>
+    </ul>
+    <script type="text/javascript" charset="utf-8">
+        var lis = document.getElementsByTagName("li");
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].style.position = "relative";
+            var span = document.createElement("span");
+            span.style.cssText = "position: absolute; left: 0; top: 0";
+            span.innerHTML = i + 1;
+            lis[i].appendChild(span);
+        }
+        const arrow = document.getElementsByClassName("arrow");
+        const div = document.createElement("div");
+        const ul = document.querySelector("ul");
+        div.appendChild(ul);
+        document.body.appendChild(div);
+        div.style.cssText = "width: 60%; height: 40%; border-radius: 50px; border: solid black 5px; z-index: 2; position: fixed; overflow-x: hidden; margin: 17%; background-color: red"
+        ul.style.cssText = "z-index: 1; display: flex; position: relative; width: 0; margin-top: 20%";
+        document.body.style.cssText = "display: flex; justify-content: space-between; align-items: flex-start;";
+        Array.prototype.map.call(arrow, (i) => i.style.cssText = "margin-top: 40%; font-size: 50px ");
+        let sound = new Audio('/storage/emulated/0/Download/shesterenka3.mp3');
+        let x = -1;
+        
+        function move(sign) {
+                let i = 1;
+                let repeat = 0;
+                let timerId = setTimeout(function move() {
+                        ul.style.left = `${x}px`;
+                        i == 130 ? clearInterval(timerId) : timerId = setTimeout(move, 2);
+                        i ++;
+                        x -= sign
+                        //sound.play();
+                }, 2);
+                //if (i > 20) sound.pause()
+        }
+        
+        
+        
+        function rightSide() {
+            move(-1);
+        }
+        
+        function leftSide() {
+            move(1);
+        }
+        arrow[0].addEventListener("click", rightSide)
+        arrow[1].addEventListener("click", leftSide)
+    </script>
+</body>
+</html>

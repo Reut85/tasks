@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    ▶Сладости (нажми меня)!
+    <ul>
+        <li>торт</li>
+        <li>пончик</li>
+        <li>пирожное</li>
+    </ul>
+    <script type="text/javascript" charset="utf-8">
+        const li = document.getElementsByTagName('li');
+        const title = document.body.childNodes[0];
+        const text = title.textContent;
+        const input = document.createElement('input');
+        let flag = true;
+        title.remove();
+        input.setAttribute('type','button');
+        input.setAttribute('value',text);
+        document.body.insertBefore(input, document.body.firstChild);
+        
+        
+        function hidden() {
+            if (flag === true) {
+                input.setAttribute('value', '▶ Сладости (нажми меня)!');
+                Array.from(li).map((item) => item.style.visibility = 'hidden');
+                flag = false
+                return
+            }
+            if (flag === false) {
+                input.setAttribute ('value', '▼ Сладости (нажми меня)!');
+                Array.from(li).map((item) => item.style.visibility = 'visible');
+                flag = true
+                return
+            }
+        }
+        
+        input.addEventListener('click', hidden)
+    </script>
+</body>
+</html> 
+ 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="task-151-index.css" type="text/css" media="all" />
+    <title>task-151-note-next-to-the-element</title>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, aperiam ut, aliquam libero eum consequuntur quasi ullam reiciendis fuga minima vel, illum dolor voluptatum quam? Animi corporis earum maiores tempora!
+    </p>
+    <blockquote>
+        - Что на завтрак, Беримор?
+        - Овсянка, сер.
+        - А на обед?
+        - Овсянка, сер. 
+        - Ну, а на ужин?
+        - Котлеты, сер.
+        - Уррра!!!
+        - Из овсянки, сер!!!
+    </blockquote>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quod eaque ullam sapiente laboriosam doloremque dolore porro quos velit voluptate suscipit, culpa, in voluptates tempore labore molestiae rerum. Odit, dolores.
+    </p>
+    <script type="text/javascript" charset="utf-8">
+        /**
+         * Позициогирует элемент elem относительно элемента anchor, как указано в position
+         * 
+         * @param {node} anchor Элемент-якорь, относительно которого задана позиция 
+         * @param {string} position Позиция одно из top/right/bottom
+         * @param {node} elem Элемент, который будет позиционирован
+         */
+         
+         function positionAt(anchor, position, elem) {
+             const coord = anchor.getBoundingClientRect();
+             elem.classList.add('note');
+             if (position == "top") {
+                 elem.style.top = coord.top + "px";
+                 elem.style.left = coord.left + "px";
+             }
+             if (position == "right") {
+                 elem.style.top = coord.top + "px";
+                 elem.style.left = (coord.right - coord.left) + "px";
+             }
+             if (position == "bottom") {
+                 elem.style.top = coord.bottom + "px";
+                 elem.style.left = coord.left + "px";
+             }
+             return elem
+         }
+         
+         /**
+          * Показывает заметку с текстом html на позиции position
+          * относительно элемента anchor
+          */
+          
+          function showNote(anchor, position, html) {
+              const quote = document.createElement('q');
+              positionAt(anchor, position, quote);
+              quote.innerHTML = html;
+              document.body.appendChild(quote);
+          }
+           //проверка работоспособности
+           var blockquote = document.querySelector('blockquote');
+           
+           showNote(blockquote, "top", "заметка сверху");
+           showNote(blockquote, "right", "заметка справа");
+           showNote(blockquote, "bottom", "заметка снизу");
+    </script>
+</body>
+</html>

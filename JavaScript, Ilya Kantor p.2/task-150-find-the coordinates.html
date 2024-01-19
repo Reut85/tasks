@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="task-150-index.css" type="text/css" media="all" />
+    <title>task-150-find-the-coordinates</title>
+    
+    <script type="text/javascript" charset="utf-8">
+        document.onclick = function(e) {
+            document.getElementById('coords').innerHTML = e.clientX + ':' + e.clientY
+        }
+    </script>
+</head>
+<body>
+    кликните на любое место, чтобы получились координаты относительно окна.
+    <br>Это для удобства тестирования, чтобы проверить результат, который вы получите из DOM 
+    <br>
+    <div id="coords">
+        (координаты появятся тут)
+    </div>
+    <div id="field">
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        ..................................
+        
+    </div>
+    <div class="triangle-right"
+    style="left:-20px; top:-176px;">
+        1
+    </div>
+    <div class="triangle-right"
+    style = "left: -10px; top: -178px;">
+        3
+    </div>
+    <div class="triangle-right"
+    style = "left: 190px; top: -40px;">
+        4
+    </div>
+    <div class="triangle-right"
+    style = "left: 200px; top: -42px;">
+        2
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var field = document.getElementById('field');
+        let elemCoords = field.getBoundingClientRect();
+        const xWithoutBorderLeft = Math.round(elemCoords.left + window.scrollX);
+        const yWithoutBorderLeft = Math.round(elemCoords.top + window.scrollY); 
+        const xWithBorderLeft = Math.round(elemCoords.left + window.scrollX + field.clientLeft);
+        const yWithBorderLeft = Math.round(elemCoords.top + window.scrollY + field.clientTop);
+            
+        const xWithoutBorderRight = Math.round(elemCoords.right + window.scrollX);
+        const yWithoutBorderRight = Math.round(elemCoords.bottom + window.scrollY); 
+        const xWithBorderRight = Math.round(elemCoords.right + window.scrollX + field.clientTop);
+        const yWithBorderRight = Math.round(elemCoords.bottom + window.scrollY + field.clientLeft);
+        field.innerHTML = '1) ' + xWithoutBorderLeft + ' : ' + yWithoutBorderLeft + '<br>' + '3) ' + xWithBorderLeft + ' : ' + yWithBorderLeft + '<br>' + '2) ' + xWithoutBorderRight + ' : ' + yWithoutBorderRight + '<br>' + '4) ' + xWithBorderRight + ' : ' + yWithBorderRight;
+    </script>
+</body>
+</html>

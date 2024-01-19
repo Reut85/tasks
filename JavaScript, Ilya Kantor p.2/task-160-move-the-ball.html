@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>move-the-ball</title>
+    <style type="text/css" media="all">
+        #field {
+            width: 200px;
+            height: 150px;
+            border: 10px groove black;
+            background-color: #00FF00;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #ball {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -20px;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body style="height: 2000px">
+    Кликните на любое место поля, чтобы мяч перелетел туда. <br> Мяч никогда не вылетит за границы поля.
+    <div id="field">
+        <img id="ball" src="https://js.cx/clipart/ball.svg" alt="" />
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . .
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        const field = document.getElementById("field");
+            
+        const fieldCoord = field.getBoundingClientRect();
+        const ball = document.getElementById("ball");
+        const ballCoord = ball.getBoundingClientRect();
+        let x = Math.trunc(ballCoord.left);
+        let y = Math.trunc(ballCoord.top);
+        
+        function move(e) {
+            
+
+            let xE = e.clientX;
+            let yE = e.clientY;
+            let timerId = setInterval(
+                function () {
+                    //спочатку коректуємо координати дотику: Якщо координата виводить межі м'яча за межі поля, значить прирівнюємо м'ячу оптимальні координати при яких він тільки торкається краю поля
+                    //якщо х більше за ширину поля мінус м'яч, то х дорівнює ширина поля мінус м'яч
+                    if (xE > field.clientWidth - Math.trunc(ball.clientWidth/2)) xE = field.clientWidth - Math.trunc(ball.clientWidth/2);
+                    //якщо у більше за висоту поля плюс верхній відступ поля мінус м'яч, то у дорівнює висота поля плюс верхній відступ поля мінус м'яч
+                    if (yE > Math.trunc(field.clientHeight + fieldCoord.top - ball.clientHeight/2)) yE = Math.trunc(field.clientHeight + fieldCoord.top - ball.clientHeight/2);
+                    if (xE < Math.trunc(ball.clientWidth/2)) xE = Math.trunc(ball.clientWidth/2);
+                    if (yE < Math.trunc(fieldCoord.top + ball.clientWidth/2)) yE = Math.trunc(fieldCoord.top + ball.clientWidth/2);
+                    //кінець перевірок на дотик біля межі поля
+                    if (x == xE && y == yE) {
+                        clearInterval(timerId);
+                    }
+                    else if (x == xE && y < yE) {
+                           y ++; 
+                        }
+                    else if (x == xE && y > yE) {
+                            y --;
+                        }
+                    else if (x > xE && y == yE) {
+                            x --;
+                        }
+                    else if (x < xE && y == yE) {
+                            x ++;
+                        }
+                    else if (x < xE && y < yE) {
+                            x ++;
+                            y ++;
+                    }
+                    else if (x > xE && y > yE) {
+                            x --;
+                            y --;           
+                    }
+                    else if (x < xE && y > yE) {
+                            x ++;
+                            y --;   
+                    }
+                    else if (x > xE && y < yE) {
+                            x --;
+                            y ++; 
+                    }
+                    ball.style.left = x + "px";
+                    ball.style.top = y - fieldCoord.top + "px";
+                }, 5);
+        }
+        
+        field.addEventListener("click", move)
+    </script>
+</body>
+</html>
