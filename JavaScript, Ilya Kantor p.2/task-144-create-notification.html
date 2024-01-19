@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="task-144/task-144-create-notification.css" type="text/css" media="all" />
+    <title>task-144-create-notification</title>
+</head>
+<body>
+    <h2>уведомление</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos, molestias iusto animi nam eveniet. Numquam aut earum, reprehenderit dolorem ipsam, quos quia totam quod dolorum praesentium corrupti voluptate porro.
+    </p>
+    <p>
+        В css есть готовый класс notification, 
+        который можно ставить уведомлению.
+    </p>
+    <script type="text/javascript" charset="utf-8">
+        /** 
+         * Показывает уведомление, пропадающее через 1.5 сек
+         * @param options.top {number} вертикальный отступ, в px  
+         * @param options.right {number} правый отступ, в px  
+         * @param options.cssText {string} строка стиля  
+         * @param options.className {string} CSS-класс 
+         * @param options.html {string} HTML-текст для показа  */
+    
+        function showNotification(options) {
+            const p = document.createElement('p');
+            const elem = document.body.children;
+            const welcome = elem[0].appendChild(p);
+            setTimeout(function() {
+              
+                welcome.innerHTML = options.html;
+                welcome.classList.add('notification');
+                if (options.className) {
+                    welcome.classList.add(options.className)
+                }
+                welcome.style.top = options.top + 'px';
+                welcome.style.position = "absolute";
+                welcome.style.right = options.right + 'px'
+            }, 1000)
+            
+            const id = () => (setTimeout(function() {
+                welcome.remove()
+            }, 1000));
+            
+            setInterval(function iter() {
+                const welcome = elem[0].appendChild(p);
+                id();
+                setTimeout(iter, 2500)
+            }, 2500)
+        }
+    
+        showNotification({ 
+            top: 10,  
+            right: 10, 
+            html: "Привет",  
+            className: "welcome" 
+        });
+    </script>
+</body>
+</html>

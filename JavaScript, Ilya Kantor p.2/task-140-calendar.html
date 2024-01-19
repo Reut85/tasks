@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-140-calendar</title>
+    <style type="text/css" media="all">
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 3px;
+            text-align: center;
+        }
+        th {
+            font-weight: bold;
+            background-color: #E6E6E6;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar"></div>
+    <script type="text/javascript" charset="utf-8">
+        function createCalendar(id, year, month)
+        {
+            let elem = document.getElementById(id);
+            const table = document.createElement('table');
+            const th = document.createElement('th');
+            const tr = document.createElement('tr');
+            const td = document.createElement('td');
+            const week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+            let empty, day;
+            
+            let voidSquare = function (year, month) {
+                const date = new Date(year, month - 1, 1);
+                const day = date.getDay();
+                return day === 0 ? 7 : day;
+            }
+
+            elem = elem.appendChild(table);
+            for (let col = 0; col < 7; col ++) {
+                elem.appendChild(th.cloneNode(true)).innerHTML = week[col];
+            }
+    
+            lastDay = new Date(year, month, 0).getDate();
+
+            day = 1 - voidSquare(year, month);
+            for (let i = 0; i < 6; i ++) {
+                const trPaste = elem.appendChild(tr.cloneNode(true));
+                for (let j = 0; j < 7; j ++) {
+                    if (day < 0) empty = ' ';
+                    if (day >= 0) empty = day + 1;
+                    trPaste.appendChild(td.cloneNode(true)).innerHTML = empty;
+                    day ++;
+                    if (day == lastDay) break;
+                }
+                if (day == lastDay) break;
+            }
+        }
+        
+        createCalendar('calendar', 2012, 9);
+    </script>
+</body>
+</html>

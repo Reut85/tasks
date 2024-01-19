@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-132-atributes</title>
+</head>
+<body>
+    <div id="widget" data-widget-name="menu">Выберите жанр</div>
+    <script type="text/javascript" charset="utf-8">
+        let widgetDiv = widget.textContent;
+        let name = widget.getAttribute('data-widget-name');
+        alert(name);
+        alert(widgetDiv)
+    </script>
+</body>
+</html>

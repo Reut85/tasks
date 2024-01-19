@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-146-fix-div-bug</title>
+    <style>
+        #moving-div {
+            border: 5px groove green;
+            background-color: yellow;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    Before Before Before
+    
+    <div id="moving-div">
+        Text Text Text 
+        <br>Text Text Text 
+        <br>
+    </div>
+    
+    After After After
+    
+    <script type="text/javascript" charset="utf-8">
+        //add your code here
+        const block = document.getElementById("moving-div");
+        const elem = document.body.children;
+        block.insertAdjacentHTML("afterEnd", "<div></div>");
+        elem[1].style.padding = '5px';
+        elem[1].style.margin = "10px";
+        var div = document.getElementById('moving-div');
+        div.style.position = 'absolute';
+        div.style.right = div.style.top = 0
+    </script>
+</body>
+</html>

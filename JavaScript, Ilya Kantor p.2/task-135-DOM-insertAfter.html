@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-135-DOM-insertAfter</title>
+</head>
+<body>
+    <div>Это</div> 
+    <div>Элементы</div> 
+    <script>  
+        var elem = document.createElement('div'); 
+        elem.innerHTML = '<b>Новый элемент</b>';
+        function insertAfter(elem, refElem) {
+        /* ваш код */ 
+            document.body.insertBefore(elem, refElem)
+        }  
+        var body = document.body;   // вставить elem после первого элемента 
+        insertAfter(elem, body.firstChild); // <‐‐‐ должно работать  
+         //вставить elem за последним элементом   
+        insertAfter(elem, body.lastChild); // <‐‐‐ должно работать
+    </script>
+</body>
+</html>

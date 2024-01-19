@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-131-polyfills</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        (function() {
+            if (document.documentElement.textContent === undefined) {
+                Object.defineProperty(HTMLElement.prototype, 'textContent', {
+                    get: function() {
+                        return this.innerText
+                    },
+                    set: function(value) {
+                        return this.innerText = value
+                    }
+                })
+            }
+        })()
+    </script>
+</body>
+</html>

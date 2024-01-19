@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-134-DOM-remove</title>
+</head>
+<body>
+    <div>Это</div>
+    <div>Все</div> 
+    <div>Элементы DOM</div> 
+    <script> 
+    /* ваш код полифилла */ 
+          (function() {
+            if (document.documentElement.remoove === undefined) {
+                Element.prototype.remoove = function remoove() {
+                        let parent = this.parentNode;
+                        if (parent) {
+                            this.remove = parent.removeChild(this)
+                        }
+                    }
+            }
+        })()
+        var elem = document.body.children[0];  
+        elem.remoove(); // <‐‐ вызов должен удалить элемент 
+    </script>
+</body>
+</html>

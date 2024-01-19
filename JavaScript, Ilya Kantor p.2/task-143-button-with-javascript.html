@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-143-button-with-javascript</title>
+</head>
+<body>
+    <div>
+        Кнопка:
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        const tagA = document.createElement('a');
+        const a = document.body.appendChild(tagA);
+        a.innerHTML = "Нажми меня";
+        a.classList.add('button');
+        a.href = '/';
+        a.style.cssText = 
+            "-moz-border-radius: 8px; \
+            -webkit-border-radius: 8px;\
+            border-radius: 8px;  \
+            border: 2px groove green; \
+            display: block;  \
+            height: 30px;  \
+            line-height: 30px;  \
+            width: 100px;  \
+            text-decoration: none; \
+            text-align: center; \
+            color:  red;   \
+            font-weight: bold;\
+            ";
+    </script>
+</body>
+</html>

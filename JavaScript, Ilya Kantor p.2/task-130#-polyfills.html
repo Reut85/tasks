@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-130-polyfils</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+    (function() {
+        if (document.documentElement.closest === undefined) {
+            Object.defineProperty(Element.prototype, 'closest', {
+                get: function(css) {  
+                    var el = this; 
+                    do {   
+                        if (el.matches(css)) {
+                            return el; 
+                        }   
+                        el = el.parentElement;
+                    } 
+                    while (el); 
+                    return null;  
+                }  
+            });
+        }
+    })()
+    </script>
+</body>
+</html>

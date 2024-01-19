@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-145-sizes-scroll</title>
+    <style>
+        div{
+            max-width: 200px;
+            max-height: 300px;
+            overflow: scroll;
+            font-size: 30px;
+            font-family: arial;
+            color: cyan;
+            background: black;
+            border-radius: 30px;
+            box-shadow: 10px 10px 10px 10px #676767;
+            margin: 100px auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis enim iure tenetur, sed dicta saepe nesciunt, voluptatum repellat accusantium delectus, sequi a est eligendi ea ullam nobis quis laudantium, corporis?</div>
+    <script type="text/javascript" charset="utf-8">
+        const elem = document.body.children[0];
+        alert(elem.scrollHeight - elem.clientHeight);
+        const padding = elem.offsetHeight - elem.clientHeight;
+        alert(elem.offsetWidth - elem.clientWidth - padding)
+        const div = document.createElement('div');
+        div.style.overflow = 'scroll';
+        div.style.width = '100px';
+        div.style.height = '100px';
+        div.innerHTML = 'Это версия Ильи Кантора'
+        document.body.appendChild(div);
+        alert(div.offsetWidth - div.clientWidth)
+    </script>
+</body>
+</html>

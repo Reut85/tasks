@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-147-soccer-ball</title>
+    <style type="text/css" media="all">
+        #field {
+            width: 200px;
+            border: 10px groove black;
+            background-color: #00ff00;
+            position: relative;
+        }
+        #ball {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="field">
+        <img id="ball" src="https://js.cx/clipart/ball.svg" alt=""/>.................................
+        .......................................
+        .......................................
+        .......................................
+        .........................
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        const field = document.getElementById('field');
+        const ball = document.getElementById('ball');
+        field.style.display = "flex";
+        field.style.justifyContent = "center";
+        field.style.alignItems = "center";
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-139-ammount-of-element</title>
+</head>
+<body>
+    <ul>
+        <li>животные
+            <ul>
+                <li>млекопитающие
+                    <ul>
+                        <li>коровы</li>
+                        <li>ослы</li>
+                        <li>собаки</li>
+                        <li>тигры</li>
+                    </ul>
+                </li>
+                <li>другие
+                    <ul>
+                        <li>змеи</li>
+                        <li>птицы</li>
+                        <li>ящерицы</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>рыбы
+            <ul>
+                <li>аквариумные
+                    <ul>
+                        <li>гуппи</li>
+                        <li>скалярии</li>
+                    </ul>
+                </li>
+                <li>морские
+                    <ul>
+                        <li>морская форель</li>
+                    </ul>
+                </li>      
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript" charset="utf-8">
+        function len(str) {
+            let word = 0;
+            for (let i = 0;; i ++) {
+                if (str[i] == '\n') word ++;
+                if (!str[i]) break;
+            }
+            return word
+        }
+        
+        let li = document.getElementsByTagName('li');
+        for (let i = 0; i < li.length; i ++) {
+            for (let letter = 0; letter < 20; letter ++) {
+                if (li[i].children[0]) {
+                    let nodes = len(li[i].innerText);
+                    nodes = ' [' + nodes + ']';
+                    if (li[i].innerHTML[letter] == '\n') {
+                        nodes = li[i].innerHTML.slice(0, letter) + nodes + li[i].innerHTML.slice(letter);
+                        li[i].innerHTML = nodes;
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

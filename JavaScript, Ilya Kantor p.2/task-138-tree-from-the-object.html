@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-138-tree-from-the-object</title>
+</head>
+<body>
+    <div id="tree">
+        
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var data = { 
+            "Рыбы": { 
+                "Форель": {},  
+                "Щука": {}   
+            },
+            "Деревья": {  
+                "Хвойные": {  
+                    "Лиственница": {}, 
+                    "Ель": {}  
+                }, 
+                "Цветковые": {  
+                    "Берёза": {}, 
+                    "Тополь": {}   
+                }  
+            } 
+        };
+        
+        let elem = document.getElementById('tree');
+        function isEmpty(obj) {
+                let i = 0;
+                for ( let key in obj ) {
+                    i ++
+                }
+                if (i === 0) return true
+                else return false
+        }
+        
+        function invokeUl(elem) {
+            let ul = document.createElement('ul');
+             elem = elem.appendChild(ul);
+             return elem
+        }
+        
+        function invokeLi(elem) {
+           
+            let li = document.createElement('li');
+            elem = elem.appendChild(li);
+            return elem
+        }
+        
+        function createTree(elem, obj) {
+            for (let key in obj) {
+                if (!isEmpty(data)) {
+                    invokeUl(elem).appendChild(invokeLi(elem)).appendChild(document.createTextNode(key));
+                    createTree(elem.lastElementChild, obj[key])
+                }
+            }
+        }
+        
+        createTree(document.getElementById('tree'), data)
+    </script>
+</body>
+</html>

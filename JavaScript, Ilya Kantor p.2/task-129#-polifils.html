@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-129-polyfils</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+    (function() {
+        let doc = Element.prototype;
+        if (doc.matches === undefined) {
+            if (doc.matchesSelector === undefined) {
+                if (doc.webkitMatchesSelector === undefined) {
+                    if (doc.mozMatchesSelector === undefined) {
+                        doc.matches = doc.msMatchesSelector
+                    }
+                    doc.matches = doc.mozMatchesSelector
+                }
+                doc.matches = doc.webkitMatchesSelector
+            }
+            doc.matches = doc.matchesSelector
+        }
+    })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-148-expend-element</title>
+    <style>
+        #elem {
+            width: 200px;
+            height: 150px;
+            background-color: red;
+            padding: 20px;
+            overflow: auto;
+        }
+        body {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="elem">
+        текст текст текст текст 
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст 
+        текст текст текст текст
+           текст текст текст текст 
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст 
+        текст текст текст текст
+           текст текст текст текст 
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст
+        текст текст текст текст 
+        текст текст текст текст
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var elem = document.getElementById('elem');
+        // мой вариант
+        //elem.style.padding = '0px';
+        //elem.style.paddingRight = document.body.offsetWidth - elem.offsetWidth;
+        //вариант Ильи Кантора
+        elem.style.width = "auto";
+    </script>
+</body>
+</html>
