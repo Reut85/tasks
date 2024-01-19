@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-127-getElement-querySelector</title>
+</head>
+<body>
+    <ul>
+        <li>животные
+            <ul>
+                <li>млекопитающие
+                    <ul>
+                        <li>коровы</li>
+                        <li>ослы</li>
+                        <li>собаки</li>
+                        <li>тигры</li>
+                    </ul>
+                </li>
+                <li>другие
+                    <ul>
+                        <li>змеи</li>
+                        <li>птицы</li>
+                        <li>ящерицы</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>рыбы
+            <ul>
+                <li>аквариумные
+                    <ul>
+                        <li>гуппи</li>
+                        <li>скалярии</li>
+                    </ul>
+                </li>
+                <li>морские
+                    <ul>
+                        <li>морская форель</li>
+                    </ul>
+                </li>      
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript" charset="utf-8">
+        let list = document.getElementsByTagName('li');
+        for (let i = 0; i < list.length; i ++) {
+            for (j = 0; j < 25; j ++) {
+                if (list[i].innerHTML[j] == '\n') {
+                    alert( list[i].innerHTML.slice(0, j) )
+                    break;
+                }
+                if (list[i].children[0] == null) {
+                    alert( list[i].innerHTML )
+                    break;
+                }   
+            }
+        };
+        alert(list.length)
+        
+    </script>
+</body>
+</html>
