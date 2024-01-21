@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        class HttpError extends Error {
+            constructor(response) {
+                super(`${response.status} for ${response.url}`);
+                this.name = 'HttpError';
+                this.response = response;
+            }
+        }
+        
+        async function loadJson(url) {
+            let response = await fetch(url);
+            if (response.status == 200) return response.json();
+            throw new HttpError(response);
+        }
+        
+        // Запитуйте ім’я користувача, поки github не поверне дійсного користувача
+        async function demoGithubUser() {
+            while (true) {
+                try {
+                    let name = prompt("Введіть ім’я?", "iliakan");
+
+                    var user = await loadJson(`https://api.github.com/users/${name}`);
+                    alert(`Ім’я та прізвище: ${user.name}.`);
+                    return user
+                }
+                catch (err) {
+                    if (err instanceof HttpError) alert("Такого користувача не існує, будь ласка, введіть ще раз.");
+                }
+                
+            }    
+        }
+
+
+        demoGithubUser();
+    </script>
+</body>
+</html>
