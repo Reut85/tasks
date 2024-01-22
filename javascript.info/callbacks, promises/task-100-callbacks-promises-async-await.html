@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        async function wait() {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            return 10;
+        }
+
+        function f() {
+            return wait().then(alert);
+            // ...що тут варто написати?
+            // нам потрібно викликати async-функцію wait() і почекати, щоб отримати 10
+            // пам’ятайте, ми не можемо використовувати "await"
+        }
+        
+        f()
+    </script>
+</body>
+</html>
