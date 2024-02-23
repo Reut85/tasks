@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        function makeObservable(target) {
+            /* ваш код */
+            target.observe = function(callback) {
+                target.callback = callback
+            }
+            return new Proxy(target, {
+                set(target, prop, val) {
+                    target[prop] = val;
+                    target.callback(prop, val)
+                    return true
+                }
+            });
+        }
+        
+        let handlers = Symbol('handlers');
+
+        // Варіант javascript.info
+        /*function makeObservable(target) {
+        // 1. Ініціалізуємо сховище обробників
+            target[handlers] = [];
+
+        // Збережемо функцію-обробник в масиві для майбутніх викликів
+            target.observe = function(handler) {
+                this[handlers].push(handler);
+            };
+
+        // 2. Створимо проксі для обробки змін
+            return new Proxy(target, {
+                set(target, property, value, receiver) {
+                    let success = Reflect.set(...arguments);// перенаправимо операцію на об’єкт
+                    if (success) { // якщо під час запису властивості не було помилок
+                    // викличемо всі обробники
+                        target[handlers].forEach(handler => handler(property, value));
+                    }
+                    return success;
+                }
+            });
+        }*/
+
+
+        let user = {};
+        user = makeObservable(user);
+
+        user.observe((key, value) => {
+            alert(`SET ${key}=${value}`);
+        });
+
+        user.name = "Іван"; // сповіщає: SET
+    </script>
+</body>
+</html>

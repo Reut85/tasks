@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+  <ul>
+    <li>Тварини
+      <ul>
+        <li>Ссавці
+          <ul>
+            <li>Корови</li>
+            <li>Осли</li>
+            <li>Собаки</li>
+            <li>Тигри</li>
+          </ul>
+        </li>
+        <li>Інші
+          <ul>
+            <li>Змії</li>
+            <li>Птахи</li>
+            <li>Ящірки</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Риби
+      <ul>
+        <li>Акваріум
+          <ul>
+            <li>Гуппі</li>
+            <li>Риби-ангели</li>
+          </ul>
+        </li>
+        <li>Море
+          <ul>
+            <li>Морська форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    // ... ваш код...
+    let li = document.querySelectorAll("li");
+    for (let i = 0; i < li.length; i ++) {
+        let number = 0;
+        while (li[i].contains(li[i + number])) {
+            number ++;
+        }
+        alert((li[i].textContent.includes("\n") ? li[i].textContent.substring(0, li[i].textContent.indexOf("\n")) : li[i].textContent) + `: ${number - 1}`)
+        // У прикладі мені дуже закортіло написати все в один рядок . Копілот з цим впорався бездоганно)). Все що до алерту - написав я.
+    }
+
+  </script>
+
+</body>
+</html>
