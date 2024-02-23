@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a name="list">список</a>
+    <ul>
+      <li><a href="http://google.com">http://google.com</a></li>
+      <li><a href="/tutorial">/tutorial.html</a></li>
+      <li><a href="local/path">local/path</a></li>
+      <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+      <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+      <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+    </ul>
+
+    <script>
+      // налаштування style для одного посилання
+      let link = document.querySelector('a');
+      link.style.color = 'orange';
+      let allLink = document.querySelectorAll('a');
+      for (let a = 1; a < allLink.length; a ++) {
+          if (allLink[a].textContent.includes("://") && !allLink[a].href.startsWith("http://internal.com")) {
+              allLink[a].style.color = "orange";
+          }
+      }
+    </script>
+</body>
+</html>
