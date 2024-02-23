@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-103-Proxy-minus-index.html</title>
+</head>
+
+<body>
+    <script>
+        let array = [1, 2, 3];
+
+        array = new Proxy(array, {
+            /* ваш код */
+            get(target, prop) {
+                if (prop < 0) return Reflect.get(target, target.length - Math.abs(prop))
+                else return Reflect.get(target, prop)
+            }
+        });
+
+        alert(array[-1]); // 3
+        alert(array[-2]); // 2
+
+        // Іншу функціональність масиву слід зберегти "як є"
+    </script>
+</body>
+
+</html>

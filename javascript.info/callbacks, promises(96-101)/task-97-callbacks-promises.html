@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .circle {
+      transition-property: width, height;
+      transition-duration: 2s;
+      position: fixed;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: red;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      top: 150px;
+      left: 150px;
+    }
+    .message-ball {
+        font-family: serif;
+        
+        /*text-align: center;*/
+        justify-content: center; /* center the text horizontally */
+        align-items: center; /* center the text vertically */
+        text-align: center; /* align the text within the element */
+        display: flex; /* use flexbox to center the text */
+        
+    }
+  </style>
+</head>
+
+<body>
+
+    <div class="circle"></div>
+  
+    <script type="text/javascript" charset="utf-8">
+        const div = document.body.children[0];
+        const button = document.createElement('button');
+        div.style.width = '1px';
+        div.style.height = '1px';
+        button.textContent = "click me";
+        document.body.insertBefore(button, div);
+        function showCircle(cx, cy, radius, callback) {
+            div.textContent = '';
+            let rgb = 'rgb(0,0,0)'
+            //div.style.color = rgb;
+            div.style.width = '1px';
+            div.style.height = '1px';
+            div.style.top = cy + 'px';
+            div.style.left = cx + 'px';
+            period = 5;
+            for (let i = 0; i <= radius; i ++) {
+                setTimeout(() =>(div.style.width = i + 'px'), period);
+                setTimeout(() =>(div.style.height = i + 'px'), period);
+            };
+            setTimeout(() => callback(div), period * radius * 5);
+            divBlack = div.cloneNode(true);
+            setTimeout(() => {
+                for (let i = radius; i >= 1; i --) {
+                    function changeColor(color,val) {
+                        let arr = color.split('');
+                        arr[4] = val;
+                        return arr.join('');
+                    }
+                    //console.log(changeColor(rgb, 100));
+                    divBlack.classList.add("circle");
+                    divBlack.style.background = "black";
+                    setTimeout(() => (div.style.width = i + 'px', div.style.color = changeColor(rgb, i * 2)), period);
+                    setTimeout(() =>(div.style.height = i + 'px'), period);
+            }}, period * radius * 7)
+            
+        }
+        
+        
+        
+        button.addEventListener('click', function() {
+                showCircle(150, 150, 100, div => {
+                    div.classList.add('message-ball');
+                    div.append("Hello, world!");
+                });
+        })
+  </script>
+
+</body>
+</html>

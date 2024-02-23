@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-102-Proxy-wrap.html</title>
+</head>
+
+<body>
+    <script>
+        let user = {
+            name: "Іван"
+        };
+
+        function wrap(target) {
+            return new Proxy(target, {
+                /* ваш код */
+                get(target, prop) {
+                    if (!target[prop]) {
+                        throw new Error("ReferenceError: Property is not exist: " + prop)
+                    } else { return target[prop] }
+                }
+            })
+        }
+
+        // Variant of javascript.info
+
+        // function wrap(target) {
+        //     return new Proxy(target, {
+        //         get(target, prop, receiver) {
+        //             if (prop in target) {
+        //                 return Reflect.get(target, prop, receiver);
+        //             } else {
+        //                 throw new ReferenceError(`Властивість не існує: "${prop}"`)
+        //             }
+        //         }
+        //     });
+        // }
+        user = wrap(user);
+
+        alert(user.name); // Іван
+        alert(user.age); // ReferenceError: Властивість не існує: "age"
+    </script>
+</body>
+
+</html>
