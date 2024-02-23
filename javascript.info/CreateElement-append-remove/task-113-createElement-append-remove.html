@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        const ul = document.createElement("UL");
+        let fragment = new DocumentFragment();
+
+        while(true) {
+            let text = prompt("Введіть пункт списку:", "");
+            if (text == undefined || text == null) break;
+            let li = document.createElement('li');
+            li.append(text);
+            fragment.append(li);
+        }
+        
+        ul.append(fragment);
+        document.body.append(ul)
+        
+    </script>
+</body>
+</html>
