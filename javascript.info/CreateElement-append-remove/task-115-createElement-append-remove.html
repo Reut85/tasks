@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        let data = {
+            Риба: {
+                форель: {},
+                лосось: {}
+            },
+
+            Дерево: {
+                Величезні: {
+                    секвойя: {},
+                    дуб: {}
+                },
+                Квітучі: {
+     
+                    яблуня: {},
+                    магнолія: {}
+                }
+            }
+        };
+        
+        const mainDiv = document.createElement('div');
+        const id = 'container';
+        mainDiv.id = id;
+        document.body.append(mainDiv);
+        
+        function createTree(elem, obj) {
+            function createBranches(elem, obj) {
+                const ul = document.createElement('ul');
+                for (let key of Object.keys(obj)) {
+                    const li = document.createElement('li');
+                    li.append(key);
+                    ul.append(li);
+                    elem.append(ul);
+                    if (typeof(obj[key]) == 'object') {
+                        createBranches(li, obj[key])
+                    }
+                }
+            }
+            createBranches(elem, obj)
+        }
+        
+        let container = document.getElementById('container');
+        createTree(container, data); 
+    </script>
+</body>
+</html>

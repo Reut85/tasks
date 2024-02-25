@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="container">
+        <li>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript" charset="utf-8">
+        let data = {
+            Риба: {
+                форель: {},
+                лосось: {}
+            },
+
+            Дерево: {
+                Величезні: {
+                    секвойя: {},
+                    дуб: {}
+                },
+                Квітучі: {
+     
+                    яблуня: {},
+                    магнолія: {}
+                }
+            }
+        };
+        // сгенеровано copilot
+        function createTree(elem, obj) {
+            // функція, яка приймає об'єкт і повертає масив його ключів і ключів його вкладених об'єктів
+            function getNestedKeys(obj) {
+                // створюємо порожній масив для результату
+                let result = [];
+                // перебираємо всі властивості об'єкту
+                for (let key in obj) {
+                    // додаємо ключ до масиву
+                    result.push(key);
+                    // якщо значення властивості є об'єктом
+                    if (typeof obj[key] === 'object') {
+                    // рекурсивно викликаємо функцію для цього об'єкта і додаємо його вкладені ключі до масиву
+                        result = result.concat(getNestedKeys(obj[key]));
+                    }
+                }
+                // повертаємо масив
+                return result;
+            }
+            
+            let li = elem.querySelectorAll('li');
+            for (let i = 0; i < li.length; i ++) {
+                li[i].prepend(getNestedKeys(obj)[i])
+            }
+        }
+
+        let container = document.getElementById('container');
+        createTree(container, data); 
+    </script>
+</body>
+</html>
