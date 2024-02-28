@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+  <ul>
+    <li>Тварини
+      <ul>
+        <li>Ссавці
+          <ul>
+            <li>Корови</li>
+            <li>Осли</li>
+            <li>Собаки</li>
+            <li>Тигри</li>
+          </ul>
+        </li>
+        <li>Інші
+          <ul>
+            <li>Змії</li>
+            <li>Птахи</li>
+            <li>Ящірки</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Риби
+      <ul>
+        <li>Акваріумні
+          <ul>
+            <li>Гуппі</li>
+            <li>Риба-янгол</li>
+          </ul>
+        </li>
+        <li>Морські
+          <ul>
+            <li>Морська форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    // ... ваш код ...
+    let li = document.querySelectorAll("li");
+    for (let i = 0; i < li.length; i ++) {
+        let number = 0;
+        while (li[i].contains(li[i + number])) {
+            number ++;
+        }
+
+        // Знайти позицію переносу
+        if (li[i].innerHTML.indexOf("\n")) {
+        // Якщо перенос існує
+        li[i].firstChild.after(': ' + (number - 1));
+        } else {
+            li[i].append(`: ${number - 1}`)
+        }
+    }
+  </script>
+
+</body>
+</html>
