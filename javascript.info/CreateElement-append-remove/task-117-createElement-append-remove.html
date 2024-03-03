@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+      padding: 3px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: bold;
+      background-color: #E6E6E6;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="calendar"></div>
+
+  <script>
+    function createCalendar(elem, year, month) {
+      // ...ваш код, який генерує календар в elem...
+        const table = document.createElement('table');
+        const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд'];
+        for (let row = 0; row < 6; row ++) {
+            const tr = document.createElement('tr');
+            for (let i = 0; i <= 6; i ++) {
+                if (row == 0) {
+                    const th = document.createElement('th');
+                    th.append(days[i]);
+                    tr.append(th);
+                } else {
+                    const td = document.createElement('td');
+                    tr.append(td);
+                }
+            }
+            table.append(tr)
+        }
+        document.body.append(table)
+        const dataTr = document.querySelectorAll('td');
+        const date = new Date(year, month);
+        const dayOfWeek = date.getDate();
+        if (dayOfWeek == 0) dayOfWeek = 7;
+        numberOfDay = 1;
+        for (let i = 0; i < dataTr.length; i ++) {
+            if (i + 1 == dayOfWeek || i + 1 > dayOfWeek) {
+                if (i > new Date(year, month + 1 , -1).getDate()) break;
+                dataTr[i].prepend(numberOfDay);
+                numberOfDay ++;
+            }
+        }
+    }
+
+    createCalendar(calendar, 2012, 9);
+  </script>
+
+</body>
+</html>

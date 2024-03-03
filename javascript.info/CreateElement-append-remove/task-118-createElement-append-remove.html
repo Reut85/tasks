@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+
+    <!-- натискання на цю кнопку викличе clockStart() -->
+    <input type="button" onclick="clockStart()" value="Пуск">
+
+    <!-- натискання на цю кнопку викличе clockStop() -->
+    <input type="button" onclick="clockStop()" value="Стоп">
+    <script type="text/javascript" charset="utf-8">
+        let timer;
+        document.body.style.cssText = "font-size: 100%; font-style: italic; margin-top: 10%;"
+        document.body.children[0].style.cssText = document.body.children[1].style.cssText = "font-size: 100%; color: cyan; margin-right: 5%; width: 70px; height: 30px; border: 2px solid cyan; font-style: italic; border-radius: 10px";
+
+        function clockStart() {
+            if (document.querySelector('table')) document.querySelector('table').remove();
+            const table = document.createElement('table');
+            const tr = document.createElement('tr');
+            for (let i = 0; i < 3; i ++) {
+                const td = document.createElement('td');
+                tr.append(td);
+                if (i == 2) break;
+                tr.append(' : ');
+            }
+            table.append(tr);
+            document.body.append(table);
+            table.style.cssText = "background: grey; font-size: 20px; color: cyan;  border: solid 2px cyan; font-style: italic; border-radius: 10px; display: inline"
+          
+            function clockValues() {
+                const cells = document.querySelectorAll('td');
+                let date = new Date();
+                // доєднання 0 до однієї цифри часу
+                let pairFigures = (num) => num / 10 >= 1 ? num : '0' + num;
+                let time = [pairFigures(date.getHours()), pairFigures(date.getMinutes()), pairFigures(date.getSeconds())];
+                for (let value = 0; value < cells.length; value ++) {
+                  cells[value].textContent = time[value];
+                }
+            };
+          
+            timer = setInterval(clockValues, 1000);
+            clockValues()
+            document.body.firstElementChild.onclick = '';
+        }
+      
+        function clockStop() {
+            setTimeout(() => clearInterval(timer), 0)
+            document.body.firstElementChild.onclick = clockStart;
+        }
+    </script>
+
+</body>
+</html>
