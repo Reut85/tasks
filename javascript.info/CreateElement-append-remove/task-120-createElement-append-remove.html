@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <table>
+    <table id="table">
         <thead>
             <tr>
                 <th>Ім’я</th>
@@ -54,6 +54,11 @@
             listRows[i + 1].children[1].textContent = arr[i].lastName;
             listRows[i + 1].children[2].textContent = arr[i].age
         }
+        
+        // варіант javascript.info
+        /*let sortedRows = Array.from(table.tBodies[0].rows).sort((rowA, rowB) => rowA.cells[0].innerHTML.localeCompare(rowB.cells[0].innerHTML));
+
+            table.tBodies[0].append(...sortedRows);*/ 
     </script>
 </body>
 </html>
