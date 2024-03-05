@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Ім’я</th>
+                <th>Прізвище</th>
+                <th>Вік</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Сергій</td>
+                <td>Петренко</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Юрій</td>
+                <td>Даниленко</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>Анна</td>
+                <td>Ткаченко</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Сергій</td>
+                <td>Реут</td>
+                <td>38</td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript" charset="utf-8">
+        const listRows = document.querySelectorAll('tr');
+        let arr = [];
+        for (let i = 1; i < listRows.length; i ++) {
+            const obj = {};
+            obj.firstName = listRows[i].children[0].textContent;
+            obj.lastName = listRows[i].children[1].textContent;
+            obj.age = listRows[i].children[2].textContent;
+            arr.push(obj);
+        }
+        arr.sort((a, b) => a.firstName.localeCompare(b.firstName));
+        for (let i = 0; i < arr.length; i ++) {
+            listRows[i + 1].children[0].textContent = arr[i].firstName;
+            listRows[i + 1].children[1].textContent = arr[i].lastName;
+            listRows[i + 1].children[2].textContent = arr[i].age
+        }
+    </script>
+</body>
+</html>
