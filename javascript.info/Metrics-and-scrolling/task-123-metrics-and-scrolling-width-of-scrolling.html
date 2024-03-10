@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione odit, obcaecati sit ut libero eligendi, incidunt consequatur nemo veritatis quas quos qui dignissimos error iusto. Ducimus necessitatibus non voluptates illum.</span>
+        <span>Culpa distinctio earum harum totam nobis dolorem hic molestiae mollitia odit deserunt accusamus, aspernatur aperiam, ipsa excepturi aliquam natus. Consequatur dolore nemo natus voluptatum laboriosam iure earum. Officia, placeat, iusto.</span>
+        <span>Quasi quam quis, necessitatibus ut temporibus adipisci nihil, ex quaerat sit, velit, ipsam recusandae! Soluta omnis distinctio natus, voluptatem commodi fugiat, minus obcaecati veritatis quidem id pariatur quia vero a!</span>
+        <span>Fuga ab adipisci numquam ad, nam facilis et veritatis perspiciatis quibusdam odio obcaecati molestias maxime exercitationem totam accusantium facere rem pariatur sed dolores dolorem blanditiis reprehenderit, fugit assumenda aut! Ducimus.</span>
+        <span>Voluptatum cum aliquam officia nemo, reprehenderit soluta laborum. Error fugit, explicabo alias, laboriosam quo ut doloremque provident natus culpa ipsa necessitatibus similique, ratione doloribus dolor dolore eum libero, adipisci excepturi?</span>
+        <span>Nihil earum, quia ipsam! Magnam adipisci debitis quos facere quam consectetur est, velit odit? Magnam a nobis beatae, tempore vitae, similique incidunt illo tenetur nisi, atque, ut quaerat officia voluptates!</span>
+        <span>Adipisci quo, harum doloribus iusto nemo ex perferendis, obcaecati velit unde rerum consequuntur eius iure, reprehenderit molestias sed quae, quod soluta porro praesentium corporis dolorem. Tenetur obcaecati fugit repellat illo?</span>
+        <span>Quasi, numquam, blanditiis. Repellat voluptatum esse soluta maiores possimus provident rerum reprehenderit. Quaerat hic quidem qui voluptatem quasi earum vitae nihil, nisi eos dicta ipsa quia voluptas ea tenetur ullam.</span>
+        <span>Quam explicabo earum inventore eos praesentium itaque, hic ea ut architecto fuga consequatur sint doloribus pariatur beatae voluptatum dolor voluptatem officia quaerat qui odio debitis commodi facere voluptas. Temporibus, aliquid.</span>
+        <span>Natus voluptate officia, dicta magni quia voluptates soluta delectus perferendis dolorem! Odio ducimus dolorum consequuntur qui laudantium sit, laboriosam nostrum ipsum odit optio, ratione sed alias enim repellendus quibusdam tempore!</span>
+    </p>
+    <script type="text/javascript" charset="utf-8">
+        const p = document.querySelector('p');
+        const padding = parseInt(getComputedStyle(p).padding);
+        const border = parseInt(getComputedStyle(p).borderWidth);
+        const scrollbar = p.offsetWidth - padding - padding - border - border - p.clientWidth;
+        alert(scrollbar)
+    </script>
+</body>
+</html>
