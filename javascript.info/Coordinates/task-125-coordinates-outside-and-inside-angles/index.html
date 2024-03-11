@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css">
+  <script>
+    document.onclick = function(e) { // показує координати кліку
+      coords.innerHTML = e.clientX + ':' + e.clientY;
+    };
+  </script>
+</head>
+
+<body>
+
+  Клацніть будь-де, щоб отримати координати вікна.
+  <br> Це для тестування, щоб перевірити результат, який ви отримуєте за допомогою JavaScript.
+  <br>
+  <div id="coords">(координати кліку з’являться тут)</div>
+
+
+  <div id="field">
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+
+  <div class="triangle-right" style="left:-20px;top:-176px">1</div>
+  <div class="triangle-right" style="left:-10px;top:-178px">3</div>
+  <div class="triangle-right" style="left:190px;top:-40px">4</div>
+  <div class="triangle-right" style="left:200px;top:-42px">2</div>
+
+
+  <script>
+    // ...ваш код...
+    const field = document.getElementById('field');
+    const xy = field.getBoundingClientRect();
+    const br = document.createElement('br');
+    
+    document.body.append('Координати лівого зовнішнього кута: ' + xy.x + ', ' + xy.y);
+    document.body.append(br);
+    document.body.append('Координати лівого внутрішнього кута: ' + (xy.x + field.clientLeft) + ', ' + (xy.y + field.clientTop));
+    document.body.append(br.cloneNode(true));
+    document.body.append('Координати правого зовнішнього кута: ' + xy.right + ', ' + xy.bottom);
+    document.body.append(br.cloneNode(true));
+    document.body.append('Координати правого внутрішнього кута: ' + (xy.right - field.clientLeft) + ', ' + (xy.bottom - field.clientTop))
+    
+  </script>
+
+</body>
+</html>
