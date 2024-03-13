@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body style = "height: 7000px">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+  <blockquote>
+    Учитель: Чому ти спізнився?
+    Учень: Зустрів чоловіка, який загубив стодоларову купюру.
+    Учитель: Отакої. Ти допомагав йому шукати?
+    Учень: Ні, я стояв на ній.
+  </blockquote>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+
+  <script>
+    /**
+     * Розміщує елемент elem відносно елемента anchor так, як зазначено в положенні position.
+     *
+     * @param {Node} anchor     Елемент, відносно якого позиціонується елемент elem
+     * @param {string} position Один з: top/right/bottom
+     * @param {Node} elem       Елемент, який позиціонується
+     *
+     * Обидва елементи: elem і anchor повинні бути в документі
+     */
+    function positionAt(anchor, position, elem) {
+        elem = elem.cloneNode(true);
+        elem.innerHTML = position;
+        document.body.append(elem);
+      // ... ваш код ...
+      const coords = anchor.getBoundingClientRect();
+      
+      if (position[0] === 'r') {
+          // right-in
+          if (position[position.length - 1] === 'n') {
+              elem.style.left = coords.right - elem.clientWidth + 'px';
+              elem.style.top = coords.top + 'px';
+          }
+          // right-out
+          else {
+              elem.style.left = coords.right + 'px';
+              elem.style.top = coords.top + 'px';
+          }
+      }
+      if (position[0] === 't' || position[0] === 'b') {
+              elem.style.left = coords.left + 'px';
+              // top-in
+              if (position[0] === 't' && position[position.length - 1] === 'n') {
+                  elem.style.top = coords.top + 'px';
+              }
+              // top-out
+              if (position[0] === 't' && position[position.length - 1] === 't') {
+                  // не зрозумів ділення...Але працює
+                  elem.style.top = coords.top - elem.clientWidth/2 + 'px';
+              }
+              // bottom-in
+              if (position[0] === 'b' && position[position.length - 1] === 'n') {
+                 elem.style.top = coords.bottom + 'px'; 
+              }
+              // bottom-out
+              if (position[0] === 'b' && position[position.length - 1] === 't') {
+                  elem.style.top = coords.bottom - elem.clientHeight + 'px';
+              }
+       }
+    }
+
+    /**
+     * Показує примітку із заданим HTML у заданій позиції
+     * відносно елемента anchor.
+     */
+
+      let note = document.createElement('div');
+      note.className = "note";
+      //note.innerHTML = position;
+  
+
+    // спробуємо
+    let blockquote = document.querySelector('blockquote');
+    blockquote.style.border = 'solid';
+
+    // показує примітку над елементом blockquote
+    positionAt(blockquote, "top-out", note);
+
+    // показує примітку всередині елемента blockquote поряд з верхнім краєм
+    positionAt(blockquote, "top-in", note);
+    positionAt(blockquote, 'right-in', note);
+    positionAt(blockquote, 'right-out', note);
+    positionAt(blockquote, 'bottom-out', note);
+    positionAt(blockquote, 'bottom-in', note)
+  </script>
+
+
+</body>
+</html>
