@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- створіть свою розмітку та стилі -->
+
+    <button class="arrow">⇦</button>
+    <button class="arrow">⇨</button>
+
+    <div class="border">
+        <ul>
+            <li><img src="https://en.js.cx/carousel/1.png"></li>
+            <li><img src="https://en.js.cx/carousel/2.png"></li>
+            <li><img src="https://en.js.cx/carousel/3.png"></li>
+            <li><img src="https://en.js.cx/carousel/4.png"></li>
+            <li><img src="https://en.js.cx/carousel/5.png"></li>
+            <li><img src="https://en.js.cx/carousel/6.png"></li>
+            <li><img src="https://en.js.cx/carousel/7.png"></li>
+            <li><img src="https://en.js.cx/carousel/8.png"></li>
+            <li><img src="https://en.js.cx/carousel/9.png"></li>
+            <li><img src="https://en.js.cx/carousel/10.png"></li>
+        </ul>
+    </div>
+
+  <script>
+    // цей код позначає картинки, для зручності розробки
+    // він може бути видалений
+    const ul = document.querySelector('ul');
+    ul.id = 'carousel';
+    const carousel = document.getElementById('carousel');
+    let i = 1;
+    for(let li of carousel.querySelectorAll('li')) {
+        li.insertAdjacentHTML('beforeend', `<span style="position:absolute;font-size: 20px;color:yellow;left:0;top:0;">${i}</span>`);
+      i++;
+    }
+
+    // ...ваш код, який зробить карусель робочою
+    
+    const buttons = document.querySelectorAll('.arrow');
+    let currentPosition = 0;
+    //const slides = document.querySelector('li');
+    
+    const images = document.querySelectorAll('#carousel img');
+    const totalImages = images.length;
+    const imageWidth = images[0].clientWidth; // Ширина одного зображення
+
+    function moveRight() {
+      currentPosition -= imageWidth * 2; // Переміщення на дві картинки вліво
+      if (currentPosition < -imageWidth * (totalImages - 2)) {
+        currentPosition = 0; // Повернення до початку, якщо досягнуто кінця
+      }
+      updateSliderPosition();
+    }
+
+    function moveLeft() {
+      currentPosition += imageWidth * 2; // Переміщення на дві картинки вправо
+      if (currentPosition > 0) {
+        currentPosition = -imageWidth * (totalImages - 2); // Перехід до кінця, якщо досягнуто початку
+      }
+      updateSliderPosition();
+    }
+
+    function updateSliderPosition() {
+      document.querySelector('#carousel').style.left = currentPosition + 'px';
+    }
+    
+    const border = document.querySelector('.border');
+    const divCoord = border.getBoundingClientRect();
+    buttons[0].style.cssText = `left: ${divCoord.left - buttons[0].clientWidth}px; top: ${divCoord.top}px`;
+    buttons[1].style.cssText = `left: ${divCoord.right}px; top: ${divCoord.top}px`;
+    buttons[0].addEventListener('click', moveLeft);
+    buttons[1].addEventListener('click', moveRight)
+  </script>
+
+</body>
+</html>

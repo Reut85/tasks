@@ -1,0 +1,60 @@
+.arrow {
+  padding: 0;
+  background: #ddd;
+  border-radius: 15px;
+  border: 1px solid yellow;
+  font-size: 24px;
+  line-height: 24px;
+  color: #444;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 110px;
+}
+
+.arrow:focus {
+  outline: none;
+}
+
+.arrow:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+ul {
+  height: 130px;
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+  z-index: 1;
+  position: relative;
+  transition: left 0.3s ease;
+  left: 0;
+  display: flex;
+  background-color: gray;
+}
+
+ul img {
+  width: 130px;
+  height: 130px;
+  display: inline; /* видаляє зайві пробіли біля зображень */
+}
+
+ul li {
+  display: inline-block;/* видаляє зайві пробіли між елементами списку */
+  position: relative;
+}
+
+.border {
+    position: fixed;
+    margin-left: 50px;
+    z-index: 2;
+    width: 260px;
+    height: 110px;
+    border: 8px solid yellow;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0);
+    overflow: hidden;
+}
