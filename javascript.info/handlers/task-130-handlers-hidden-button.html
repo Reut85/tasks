@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        const button = document.createElement('input');
+        button.value = 'Button';
+        button.type = 'button';
+        button.onclick = () => {
+            button.value = '';
+            button.style.border = 'none';
+            button.style.background = 'white'
+        };
+        document.body.append(button);
+    </script>
+</body>
+</html>

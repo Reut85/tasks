@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <input type="button" id="hider" value="Натисніть, щоб текст зник" />
+
+  <div id="text">Текст</div>
+
+  <script>
+    /* ваш код */
+    const button = document.getElementById('hider');
+    const text = document.getElementById('text');
+    button.onclick = () => text.textContent = "";
+  </script>
+
+</body>
+</html>
