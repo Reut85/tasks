@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="messages.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  Код кнопки (можливо вам потрібно змінити CSS):
+  <button class="remove-button">[x]</button>
+
+  <div>
+    <div class="pane">
+      <h3>Кінь</h3>
+      <p>Кінь є одним із двох підвидів Equus ferus, що існує. Це парнокопитний ссавець, що належить до таксономічної родини Equidae. За останні 45-55 мільйонів років кінь еволюціонував із маленької багатопалої істоти, Eohippus, до великої однопалої тварини сучасності.</p>
+    </div>
+    <div class="pane">
+      <h3>Осел</h3>
+      <p>Ішак або осел (Equus africanus asinus) є одомашненим представником сімейства коней, Equidae. Диким предком осла є африканський дикий осел E. africanus. Осел використовувався як робоча тварина щонайменше 5000 років.</p>
+    </div>
+    <div class="pane">
+      <h3>Кіт</h3>
+      <p>Домашня кішка (лат. Felis catus) -- невеликий, типово пухнастий, хижий ссавець. Їх часто називають домашніми кішками, коли вони проживають з людьми, або просто кішками, коли нема потреби відрізняти їх від інших котячих. Люди часто цінують кішок за товариські стосунки й за їх здатність полювати на шкідників.
+      </p>
+    </div>
+  </div>
+    <script type="text/javascript" charset="utf-8">
+        let button = document.querySelector('button');
+        let p = document.querySelectorAll('p');
+        let pane = document.querySelectorAll('.pane');
+        for (let i = 0; i < pane.length; i ++) {
+            
+            let coordPane = pane[i].getBoundingClientRect();
+            let clone = button.cloneNode(true);
+            p[i].append(clone);
+            clone.style.top = coordPane.top + 'px';
+            clone.style.left = coordPane.right - 50 + 'px';
+            clone.style.position = 'absolute';
+            
+            /*clone.addEventListener('click', function() {
+                pane[i].style.display = 'none';
+            });*/ //мій обробник виявився зайвим
+        }
+        // далі код сгенеровано copilot
+        document.body.firstChild.remove();
+        button.remove();
+        let panes = document.querySelectorAll('.pane');
+        panes.forEach((pane, index) => {
+        let button = pane.querySelector('.remove-button');
+        button.addEventListener('click', function() {
+                pane.remove(); // Видаляємо елемент pane
+                updateButtonPositions(); // Оновлюємо позиції кнопок
+            });
+        });
+        
+        function updateButtonPositions() {
+            let panes = document.querySelectorAll('.pane');
+            panes.forEach((pane, index) => {
+                let button = pane.querySelector('.remove-button');
+                if (button) { // Перевіряємо, чи існує кнопка
+                    let coordPane = pane.getBoundingClientRect();
+                    button.style.top = coordPane.top + 'px';
+                    button.style.left = coordPane.right - 50 + 'px';
+                }
+           });
+        }
+    </script>
+</body>
+</html>
