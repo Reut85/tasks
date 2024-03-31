@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link rel="stylesheet" href="messages.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="pane">
+      <h3>Кінь</h3>
+      <p>Кінь є одним із двох існуючих підвидів дикого коня (Equus ferus). Це парнокопитний ссавець, що належить до таксономічної родини коневих (Equidae). За останні 45-55 мільйонів років кінь еволюціонував із маленької багатопалої істоти, Еогіппа (Eohippus), до великої однопалої тварини сучасності.</p>
+      <button class="remove-button">[x]</button>
+    </div>
+    <div class="pane">
+      <h3>Осел</h3>
+      <p>Осел (Equus africanus asinus) є одомашненим представником сімейства коней (Equidae). Диким предком осла є африканський дикий осел (E. africanus). Осел використовувався як робоча тварина щонайменше 5000 років.</p>
+      <button class="remove-button">[x]</button>
+    </div>
+    <div class="pane">
+      <h3>Кіт</h3>
+      <p>Домашній кіт (лат. Felis catus) — невеликий, типово пухнастий, хижий ссавець. Їх часто називають домашніми котами, якщо їх триваюсь вдома, або просто котами, коли немає необхідності відрізняти їх від інших котячих. Люди часто цінують котів за товариські стосунки і за їх здатність полювати на шкідників.
+      </p>
+      <button class="remove-button">[x]</button>
+    </div>
+  </div>
+
+  <script>
+    // ...Ваш код...
+    document.querySelector('#container').addEventListener('click', function(e) {
+        let target = e.target;
+        if (target.className != 'remove-button') return;
+        target.parentElement.remove();
+    })
+  </script>
+
+</body>
+</html>
