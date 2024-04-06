@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      height: 2000px;
+      /* зробіть прокручування можливим для body, підказка повинна працювати після прокрутки */
+    }
+
+    .tooltip {
+      /* деякі стилі для підказки, замість них ви можете використовувати власні */
+      position: fixed;
+      padding: 10px 20px;
+      border: 1px solid #b3c9ce;
+      border-radius: 4px;
+      text-align: center;
+      font: italic 14px/1.3 sans-serif;
+      color: #333;
+      background: #fff;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа</p>
+  <p>ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа ЛаЛаЛа</p>
+
+  <button data-tooltip="підказка довша за елемент">Мала кнопка</button>
+  <button data-tooltip="HTML<br>підказка">Ще одна кнопка</button>
+
+  <p>Прокрутіть сторінку, щоб кнопки з’явилися вгорі. Перевірте, чи правильно відображаються підказки.</p>
+
+
+  <script>
+    // ...Ваш код...
+    let buttons = document.querySelectorAll('button');
+
+    document.addEventListener('mouseover', function(event) {
+        let target = event.target;
+        if (target != buttons[0] && target != buttons[1]) return;
+        
+        const divTag = document.querySelector('div');
+        if (divTag) divTag.remove(); // для показу тільки однієї підказки , другу прибираємо
+        let tooltip = target.getAttribute('data-tooltip');
+        let div = document.createElement('div');
+        div.className = 'tooltip';
+        let buttonCoord = target.getBoundingClientRect();// винесення координат в окрему функцію нічого не дає 
+        div.append(tooltip);
+        target.append(div);
+        if (buttonCoord.top <= div.clientHeight) {
+            div.style.top = buttonCoord.top + div.clientHeight/2 + 'px';
+        } 
+        if (buttonCoord.top > div.clientHeight) {
+            div.style.top = buttonCoord.top - div.clientHeight + 'px';
+        }
+    })
+    
+    document.addEventListener('mouseout', function(event) {
+        const div = document.querySelector('div');
+        let target = event.target;
+        if (target != buttons[0] && target != buttons[1]) return;
+        div.remove();
+    })
+  </script>
+
+</body>
+</html>

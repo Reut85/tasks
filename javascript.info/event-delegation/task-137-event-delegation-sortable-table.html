@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+    th {
+      cursor: pointer;
+    }
+    th:hover {
+      background: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Вік</th>
+        <th data-type="string">Ім’я</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Іван</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петро</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Ганна</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Євген</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Ілля</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    // ...ваш код...
+        let grid = document.querySelector('#grid');
+        let tr = document.querySelectorAll('tr');
+        
+        grid.addEventListener('click', function(event) {
+            let target = event.target; // отримуємо елемент, на якому сталася подія
+            let arr = [];
+            for (let i = 1; i < tr.length; i ++) {
+                const obj = {};
+                obj.age = tr[i].children[0].textContent;
+                obj.name = tr[i].children[1].textContent;
+                arr.push(obj);
+            }
+            
+            function newData() {
+                for (let i = 1; i < tr.length; i ++) {
+                    // обов'язково починаємо відлік масиву об'єктів з нульової позиції
+                    tr[i].children[0].textContent = arr[i - 1].age;
+                    tr[i].children[1].textContent = arr[i - 1].name;
+                }
+            }
+            
+            if (target.tagName === 'TH') { // перевіряємо, чи це тег th
+                let dataType = target.getAttribute('data-type'); // отримуємо значення атрибута data-type
+                if (dataType === 'number') {
+                // Логіка для обробки числових даних
+                    arr.sort((a, b) => a.age - b.age);
+                    newData();
+                } else if (dataType === 'string') {
+                    arr.sort((a, b) => a.name.localeCompare(b.name));
+                    newData();
+                // Логіка для обробки текстових даних
+                }
+            }
+        });
+
+  </script>
+
+</body>
+</html>
