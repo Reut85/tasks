@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Галерея</title>
+  <link rel="stylesheet" href="gallery.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <p><img id="largeImg" src="https://en.js.cx/gallery/img1-lg.jpg" alt="Large image"></p>
+
+  <ul id="thumbs">
+    <!-- браузер показує невелику вбудовану підказку при наведенні курсора з текстом атрибута "title" -->
+    <li>
+      <a href="https://en.js.cx/gallery/img2-lg.jpg" title="Зображення 2"><img src="https://en.js.cx/gallery/img2-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img3-lg.jpg" title="Зображення 3"><img src="https://en.js.cx/gallery/img3-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img4-lg.jpg" title="Зображення 4"><img src="https://en.js.cx/gallery/img4-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img5-lg.jpg" title="Зображення 5"><img src="https://en.js.cx/gallery/img5-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img6-lg.jpg" title="Зображення 6"><img src="https://en.js.cx/gallery/img6-thumb.jpg"></a>
+    </li>
+  </ul>
+    <script type="text/javascript" charset="utf-8">
+        let thumbs = document.querySelector('#thumbs');
+        let largeImg = document.querySelector('#largeImg');
+        thumbs.addEventListener('click', function(event) {
+            let target = event.target;
+            if (!target.closest('A')) return;
+            let href = target.getAttribute('href') || target.parentNode.getAttribute('href');
+            largeImg.src = target.parentNode.href;
+            event.preventDefault();
+        })
+    </script>
+</body>
+</html>
