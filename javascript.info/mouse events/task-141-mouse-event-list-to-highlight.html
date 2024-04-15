@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<head>
+    <style>
+      .selected {
+        background: #0f0;
+      }
+  
+      li {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  
+  <body>
+  
+    Клікніть на елемент списку, щоб виділити його.
+    <br>
+  
+    <ul id="ul">
+      <li>Крістофер Робін</li>
+      <li>Вінні Пух</li>
+      <li>Тигра</li>
+      <li>Кенга</li>
+      <li>Кролик. Просто кролик.</li>
+    </ul>
+  
+    <script>
+      // ...ваш код...
+      let ul = document.querySelector('#ul');
+      ul.onclick = function(event) {
+          let target = event.target;
+          if (target.tagName != 'LI') return;
+          ul.querySelectorAll('li').forEach((element) => element.classList.remove('selected'));
+          target.classList.add('selected');
+      }
+    </script>
+  
+  </body>
+</body>
+</html>
