@@ -29,13 +29,18 @@ class HoverIntent {
         // ми зробили що могли, далі ви вже самі ;)
 
     }
-
     onMouseOver(event) {
         /* ... */
+        var over = this.over;
+        this.timer = setTimeout(function () {
+            over();
+        }, this.interval);
     }
 
     onMouseOut(event) {
         /* ... */
+        clearTimeout(this.timer);
+        this.out();
     }
 
     onMouseMove(event) {
