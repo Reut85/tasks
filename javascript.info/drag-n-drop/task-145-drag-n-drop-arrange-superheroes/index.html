@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="soccer.css">
+</head>
+
+<body>
+
+    <h2>Розставте супергероїв полем.</h2>
+
+    <p>Супергерої і м’яч - це елементи з класом "draggable". Зробіть так, щоб їх можна було переносити.</p>
+
+    <p>Важливо: обмежити перетягування межами вікна. Якщо супергероя підносять до верхньої або нижньої межі сторінки,
+        вона повинна автоматично прокручуватися.</p>
+
+    <p>Якщо сторінка поміщається на вашому екрані цілком і не має вертикальної прокрутки - зробіть вікно браузера менше,
+        щоб протестувати цю можливість.</p>
+
+    <p>У цьому завданні достатньо впоратися з вертикальною прокруткою. Зазвичай немає горизонтальної прокрутки, і вона
+        обробляється аналогічним чином, якщо це необхідно.</p>
+
+    <p>Так, і ще: супергерої ні за яких умов не повинні потрапити за край екрану.</p>
+
+    <div id="field">
+
+    </div>
+
+    <div class="hero draggable" id="hero1"></div>
+    <div class="hero draggable" id="hero2"></div>
+    <div class="hero draggable" id="hero3"></div>
+    <div class="hero draggable" id="hero4"></div>
+    <div class="hero draggable" id="hero5"></div>
+    <div class="hero draggable" id="hero6"></div>
+
+    <img src="https://en.js.cx/clipart/ball.svg" class="draggable">
+
+    <div style="clear:both"></div>
+
+    <script src="soccer.js"></script>
+</body>
+
+</html>
