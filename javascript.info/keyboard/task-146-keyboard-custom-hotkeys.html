@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Натисніть "Q" і "W" разом (можна будь-якою мовою).</p>
+    <script>
+        // Написано мною та с допомогою Copilot
+        function runOnKeys(message, ...args) {
+            let keys = {};
+            document.addEventListener('keydown', (e) => {
+                keys[e.code] = true;
+                const allKeysPressed = args.every(arg => keys[arg]);
+                if (allKeysPressed) {
+                    message();
+                    keys = {};
+                }
+            })
+
+            document.addEventListener('keyup', (e) => keys[e.code] = false);
+        }
+
+        runOnKeys(
+            () => alert("Привіт!"),
+            "KeyQ",
+            "KeyW",
+        )
+
+        // Сгенеровано Copilot 100%
+        // function createHotkeys(keys) {
+        //     let keysPressed = {};
+
+        //     window.addEventListener('keydown', function (event) {
+        //         if (keys.includes(event.key)) {
+        //             keysPressed[event.key] = true;
+
+        //             if (keys.every(key => keysPressed[key])) {
+        //                 alert('Вітаємо! Ви натиснули всі гарячі клавіші разом.');
+        //                 keysPressed = {};
+        //             }
+        //         }
+        //     });
+
+        //     window.addEventListener('keyup', function (event) {
+        //         if (keys.includes(event.key)) {
+        //             delete keysPressed[event.key];
+        //         }
+        //     });
+        // }
+
+        // // Використання функції
+        // createHotkeys(['q', 'w', 'e']);
+
+
+        
+
+        // Рішення javascript.info:
+
+        // function runOnKeys(func, ...codes) {
+        //     let pressed = new Set();
+
+        //     document.addEventListener('keydown', function (event) {
+        //         pressed.add(event.code);
+
+        //         for (let code of codes) { // чи всі клавіші в наборі?
+        //             if (!pressed.has(code)) {
+        //                 return;
+        //             }
+        //         }
+
+        //         // так
+
+        //         // під час оповіщення, якщо відвідувач відпускає клавіші,
+        //         // JavaScript не отримує подію "keyup"
+        //         // і набір натиснутих клавіш продовжуватиме вважати, що клавіша натиснута
+        //         // отже, щоб уникнути «липких» клавіш, ми скидаємо статус
+        //         // якщо користувач хоче знову запустити гарячу клавішу -- дозвольте йому знову натиснути всі клавіші
+        //         pressed.clear();
+
+        //         func();
+        //     });
+
+        //     document.addEventListener('keyup', function (event) {
+        //         pressed.delete(event.code);
+        //     });
+
+        // }
+
+        // runOnKeys(
+        //     () => alert("Привіт!"),
+        //     "KeyQ",
+        //     "KeyW"
+        // );
+    </script>
+</body>
+
+</html>
