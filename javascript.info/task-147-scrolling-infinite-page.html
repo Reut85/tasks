@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Прокрути мене</h1>
+    <script>
+        // Моє рішення не без допомоги  Copilot 
+        const p = document.createElement('p');
+        p.innerText = new Date();
+        document.body.append(p);
+        const windowHeight = document.documentElement.clientHeight;
+        const h1 = document.querySelector('h1');
+        const computedStyleH = window.getComputedStyle(h1);
+        const hHeight = Math.floor(parseFloat(computedStyleH.height) + parseFloat(computedStyleH.marginTop) +
+            parseFloat(computedStyleH.marginBottom)); // Висота елемента h1 + відступи зверху і знизу
+
+        const computedStyleP = window.getComputedStyle(p);
+        const pHeight = parseFloat(computedStyleP.height) +
+            parseFloat(computedStyleP.marginBottom); // без додавання marginTop, бо він знаходиться під наступним marginBottom!
+
+        const windowWithoutH1 = windowHeight - hHeight; // Висота вікна без висоти заголовка h1 
+        const number = Math.floor((windowWithoutH1 / pHeight)); // Кількість рядків елементу р із датою для заповнення всього вікна
+        for (let i = 0; i < number; i++) {
+            const p = document.createElement('p');
+            p.textContent = new Date();
+            document.body.append(p);
+        };
+        window.addEventListener('scroll', function () {
+            const scrollTop = window.pageYOffset;
+            const distanceToBottom = document.documentElement.scrollHeight - (scrollTop + window.innerHeight);
+            if (distanceToBottom < 100) {
+                const p = document.createElement('p');
+                p.innerText = new Date();
+                document.body.append(p);
+            }
+        });
+
+        // Рішення javascript.info
+
+
+        // function populate() {
+        //     while (true) {
+        //         let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+        //         if (windowRelativeBottom > document.documentElement.clientHeight + 100) break;
+        //         document.body.insertAdjacentHTML("beforeend", `<p>Date: ${new Date()}</p>`);
+        //     }
+        // }
+
+        // window.addEventListener('scroll', populate);
+
+        // populate(); // ініціалізація документа
+    </script>
+</body>
+
+</html>
