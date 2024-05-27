@@ -51,20 +51,30 @@
         const arrowTop = document.querySelector('#arrowTop');
         arrowTop.style.visibility = "hidden";
         const matrix = document.querySelector('#matrix');
-        
-        document.addEventListener('scroll', function() {
+
+        document.addEventListener('scroll', function () {
             if (window.scrollY >= window.innerHeight) {
-                arrowTop.style.visibility = "visible"; 
+                arrowTop.style.visibility = "visible";
             }
             if (window.scrollY <= window.innerHeight) {
                 arrowTop.style.visibility = "hidden";
             }
         });
 
-        arrowTop.addEventListener('click', function() {
+        arrowTop.addEventListener('click', function () {
             //matrix.scrollIntoView();
             window.scrollTo(0, 0);
         })
+        // Рішення javascript.info
+
+        // arrowTop.onclick = function () {
+        //     window.scrollTo(pageXOffset, 0);
+        //     // після scrollTo відбудеться подія "scroll", тому стрілка автоматично сховається
+        // };
+
+        // window.addEventListener('scroll', function () {
+        //     arrowTop.hidden = (pageYOffset < document.documentElement.clientHeight);
+        // });
     </script>
 </body>
 
