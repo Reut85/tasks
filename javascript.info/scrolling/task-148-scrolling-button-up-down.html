@@ -48,6 +48,23 @@
 
     <script>
         // ... ваш код ...
+        const arrowTop = document.querySelector('#arrowTop');
+        arrowTop.style.visibility = "hidden";
+        const matrix = document.querySelector('#matrix');
+        
+        document.addEventListener('scroll', function() {
+            if (window.scrollY >= window.innerHeight) {
+                arrowTop.style.visibility = "visible"; 
+            }
+            if (window.scrollY <= window.innerHeight) {
+                arrowTop.style.visibility = "hidden";
+            }
+        });
+
+        arrowTop.addEventListener('click', function() {
+            //matrix.scrollIntoView();
+            window.scrollTo(0, 0);
+        })
     </script>
 </body>
 
