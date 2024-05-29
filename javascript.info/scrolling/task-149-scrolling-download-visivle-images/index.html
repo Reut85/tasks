@@ -182,6 +182,9 @@
          */
         function isVisible(elem) {
             // ваш код
+            const coord = elem.getBoundingClientRect();
+            const screenBottom = window.innerHeight;
+            if (coord.top <= screenBottom) return true; else return false;
         }
 
         function showVisible() {
