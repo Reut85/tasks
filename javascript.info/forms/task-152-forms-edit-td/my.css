@@ -1,0 +1,7 @@
+/* ваші стилі */
+.button {
+    border: 1px solid black;
+    padding: 5%;
+    font-size: 20px;
+    border-radius: 5px;
+}
