@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="my.css">
+</head>
+
+<body>
+    <ul>
+        <li>Клікніть на div щоб відредагувати.</li>
+        <li>Натискання Enter або втрата фокусу збереже вміст поля введення.</li>
+    </ul>
+
+    HTML дозволено.
+
+    <div id="view" class="view">Текст</div>
+
+    <script>
+        // ...ваш код...
+        // Зауважте: елемент <textarea> повинен мати class="edit"
+        // в my.css є стилі, які зроблять його такого ж розміру як і div
+        let div = document.querySelector('#view');
+        let textarea = document.createElement('textarea');
+        textarea.classList.add('edit');
+        textarea.textContent = 'Текст';
+        let len = textarea.textContent.length;
+        div.addEventListener('click', () => {
+            div.style.display = "none";
+            if (textarea.textContent == "Текст") {
+                document.documentElement.append(textarea);
+            }
+            if (textarea) {
+                textarea.style.display = 'block'
+            }
+            textarea.focus();
+            textarea.setSelectionRange(len, len)
+
+        });
+        textarea.addEventListener('keydown', function (event) {
+            if (event.code == 'Enter') {
+                textarea.style.display = 'none';
+                div.style.display = 'block';
+                div.textContent = textarea.value;
+                len = textarea.value.length;
+            }
+        })
+
+    </script>
+</body>
+
+</html>

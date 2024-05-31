@@ -1,0 +1,25 @@
+.view,
+.edit {
+    height: 150px;
+    width: 400px;
+    font-family: sans-serif;
+    font-size: 14px;
+    display: block;
+}
+
+.view {
+    /* padding + border = 3px */
+    padding: 2px;
+    border: 1px solid black;
+}
+
+.edit {
+    /* замінити padding на border (3px щоб не зміщувати вміст) */
+    border: 3px solid blue;
+    padding: 0px;
+}
+
+.edit:focus {
+    /* позбутися рамки при фокусуванні в Safari */
+    outline: none;
+}
