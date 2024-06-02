@@ -17,7 +17,31 @@ class Button {
 
 const leftButton = new Button('ЗГОДА');
 const rightButton = new Button('ВІДМІНА');
-table.addEventListener('click', function(event) {
-    let target = event.target;
-    if (target != tagr)
-})
+let selectedTd;
+
+table.onclick = function (event) {
+    let target = event.target; // де відбувся клік?
+
+    if (target.tagName != 'TD') return; // не на TD? Тоді нас не цікавить
+
+    highlight(target); // виділити TD
+};
+
+// todo
+function highlight(td) {
+    if (selectedTd) { // видалити наявне виділення, якщо таке є
+        selectedTd.classList.remove('editHTML');
+        selectedTd.innerHTML = selectedTd.textContent;
+    }
+    selectedTd = td;
+    selectedTd.classList.add('editHTML'); // виділити новий td для редагування
+
+    function addLineBreakBeforeBR(text) {
+        // Замінюємо всі теги <br> на перенос рядка та <br>
+        let newText = text.replace(/<br>/g, '\n<br>');
+        return newText;
+    }
+
+    selectedTd.textContent = addLineBreakBeforeBR(selectedTd.innerHTML);
+    //alert(selectedTd.innerHTML)
+}
