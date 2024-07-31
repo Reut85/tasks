@@ -1,11 +1,41 @@
 /* ваші стилі */
-.button {
+.buttonLeft {
     border: 1px solid black;
-    padding: 5%;
     font-size: 20px;
     border-radius: 5px;
-}
-.editHTML {
+    position: absolute;
+    top: 100%;
+    margin-left: -85px;
+    z-index: 1000;
     background-color: aliceblue;
     color: black;
+}
+
+.buttonRight {
+    border: 1px solid black;
+    font-size: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 100%;
+    margin-left: -10px;
+    z-index: 1000;
+    background-color: aliceblue;
+    color: black;
+}
+
+.editHTML {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+    /* Заборонити зміну розміру */
+    box-sizing: border-box;
+    /* Враховувати padding і border у розмірі */
+}
+
+td {
+    position: relative;
 }
