@@ -39,6 +39,7 @@
             textarea.setSelectionRange(len, len)
 
         });
+       
         textarea.addEventListener('keydown', function (event) {
             if (event.code == 'Enter') {
                 textarea.style.display = 'none';
@@ -48,6 +49,12 @@
             }
         })
 
+        textarea.addEventListener('blur', function (event) {
+                textarea.style.display = 'none';
+                div.style.display = 'block';
+                div.innerHTML = textarea.value;
+                len = textarea.value.length;
+        })
     </script>
 </body>
 

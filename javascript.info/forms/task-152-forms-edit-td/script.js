@@ -38,7 +38,7 @@ function highlight(td) {
 
     function addLineBreakBeforeBR(text) {
         // Замінюємо всі теги <br> на перенос рядка та <br>
-        let newText = text.replace(/<br>/g, '\n<br>');
+        let newText = text.split('<br>').join('\n<br>');
         return newText;
     }
 
