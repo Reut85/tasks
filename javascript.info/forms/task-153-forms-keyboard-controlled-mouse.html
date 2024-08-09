@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #mouse {
+            display: inline-block;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        #mouse:focus {
+            outline: 1px dashed black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>Клікніть на мишу та рухайте нею за допомогою стрілок клавіатури.</p>
+
+    <pre id="mouse">
+ _   _
+(q\_/p)
+ /. .\
+=\_t_/=   __
+ /   \   (
+((   ))   )
+/\) (/\  /
+\  Y  /-'
+ nn^nn
+</pre>
+
+
+    <script>
+        // ...ваш код...
+        const mouse = document.getElementById('mouse');
+        mouse.style.position = 'absolute';
+        mouse.parentNode.style.position = 'relative';
+        const widthMouse = mouse.offsetWidth;
+        const heightMouse = mouse.offsetHeight;
+        mouse.tabIndex = '0';
+        mouse.addEventListener('keydown', (event) => {
+
+            function getCoords(elem) {
+                // Get the bounding rectangle of the element
+                var box = elem.getBoundingClientRect();
+
+                // Calculate the viewport offset
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+                var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+
+                // Calculate the position relative to the document
+                var top = box.top + scrollTop;
+                var left = box.left + scrollLeft;
+
+                return {
+                    top: Math.round(top),
+                    left: Math.round(left)
+                };
+            }
+
+            if (event.key === "ArrowLeft") {
+                mouse.style.left = (getCoords(mouse).left - widthMouse) + "px";
+            } else if (event.key === "ArrowRight") {
+                mouse.style.left = (getCoords(mouse).left + widthMouse) + "px";
+            } else if (event.key === "ArrowUp") {
+                mouse.style.top = (getCoords(mouse).top - heightMouse) + "px";
+            } else if (event.key === "ArrowDown") {
+                mouse.style.top = (getCoords(mouse).top + heightMouse) + "px";
+            }
+        })
+    </script>
+
+</body>
+
+</html>
