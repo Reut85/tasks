@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <div id="prompt-form-container">
+        <form id="prompt-form">
+            <div id="prompt-message">Введіть щось...
+                <br>Будь-ласка..
+            </div>
+            <input name="text" type="text">
+            <input type="submit" value="Ok">
+            <input type="button" name="cancel" value="Скасувати">
+        </form>
+    </div>
+
+    <script>
+        // Моє рішення де я не зміг зробити повний функціонал модального вікна, але основні дії вікон та передачі даних працюють
+        const someText = document.createElement('h1');
+        someText.innerHTML = 'Клікніть на кнопку нижче';
+        document.body.prepend(someText);
+        const inputModalWindow = document.createElement('button');
+        inputModalWindow.textContent = 'Клікніть, щоб показати форму';
+        document.body.append(inputModalWindow);
+        const modal = document.querySelector('#prompt-form-container');
+        modal.style.display = 'none';
+
+
+        function showPrompt(text, callback) {
+            const promptMessage = document.querySelector('#prompt-message');
+            promptMessage.innerHTML = text;
+
+            inputModalWindow.onclick = () => {   // Поява модального вікна
+                modal.style.display = 'block'
+                modal.style.background = 'rgb(50, 50, 50, .3)';
+            };
+
+            const form = document.querySelector('#prompt-form');
+            form.onsubmit = callback;
+            const button = document.getElementsByName('cancel')[0];
+            let inputValue = document.getElementsByName('text')[0];
+
+            button.onclick = () => {   // Обробка клавіші "Скасувати"
+                alert("Ви ввели: null");
+                modal.style.display = 'none';
+            }
+
+            form.onchange = () => {   // Обробка клавіші "Ок"
+                alert("Ви ввели: " + inputValue.value);
+                inputValue.value = '';
+                modal.style.display = 'none';
+            }
+
+        }
+
+        showPrompt("Введіть щось<br>...розумне :)", function (value) {
+            alert(value);
+        });
+
+        // Рішення javascript.info
+
+        // Покажіть напівпрозорий DIV, щоб «затінити» сторінку
+        // (форма знаходиться не всередині, а біля нього, тому що вона не повинна бути напівпрозорою)
+        // function showCover() {
+        //     let coverDiv = document.createElement('div');
+        //     coverDiv.id = 'cover-div';
+
+        //     // зробіть сторінку недоступною для прокручування, коли відкрита модальна формa
+        //     document.body.style.overflowY = 'hidden';
+
+        //     document.body.append(coverDiv);
+        // }
+
+        // function hideCover() {
+        //     document.getElementById('cover-div').remove();
+        //     document.body.style.overflowY = '';
+        // }
+
+        // function showPrompt(text, callback) {
+        //     showCover();
+        //     let form = document.getElementById('prompt-form');
+        //     let container = document.getElementById('prompt-form-container');
+        //     document.getElementById('prompt-message').innerHTML = text;
+        //     form.text.value = '';
+
+        //     function complete(value) {
+        //         hideCover();
+        //         container.style.display = 'none';
+        //         document.onkeydown = null;
+        //         callback(value);
+        //     }
+
+        //     form.onsubmit = function () {
+        //         let value = form.text.value;
+        //         if (value == '') return false; // ігнорувати порожнє повідомлення
+
+        //         complete(value);
+        //         return false;
+        //     };
+
+        //     form.cancel.onclick = function () {
+        //         complete(null);
+        //     };
+
+        //     document.onkeydown = function (e) {
+        //         if (e.key == 'Escape') {
+        //             complete(null);
+        //         }
+        //     };
+
+        //     let lastElem = form.elements[form.elements.length - 1];
+        //     let firstElem = form.elements[0];
+
+        //     lastElem.onkeydown = function (e) {
+        //         if (e.key == 'Tab' && !e.shiftKey) {
+        //             firstElem.focus();
+        //             return false;
+        //         }
+        //     };
+
+        //     firstElem.onkeydown = function (e) {
+        //         if (e.key == 'Tab' && e.shiftKey) {
+        //             lastElem.focus();
+        //             return false;
+        //         }
+        //     };
+
+        //     container.style.display = 'block';
+        //     form.elements.text.focus();
+        // }
+
+        // document.getElementById('show-button').onclick = function () {
+        //     showPrompt("Введіть щось<br>...розумне :)", function (value) {
+        //         alert("Ви ввели: " + value);
+        //     });
+        // };
+    </script>
+</body>
+
+</html>
