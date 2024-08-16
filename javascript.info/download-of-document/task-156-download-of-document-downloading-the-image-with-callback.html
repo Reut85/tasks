@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <script>
+        function preloadImages(sources, callback) {
+            /* ваш код */
+            for (let i = 0; i < sources.length; i++) {
+                var img = document.createElement('img');
+                img.src = sources[i];
+            }
+            img.onload = callback;
+        }
+
+        // Варіант javascript.info
+
+        // function preloadImages(sources, callback) {
+        //     let counter = 0;
+
+        //     function onLoad() {
+        //         counter++;
+        //         if (counter == sources.length) callback();
+        //     }
+
+        //     for (let source of sources) {
+        //         let img = document.createElement('img');
+        //         img.onload = img.onerror = onLoad;
+        //         img.src = source;
+        //     }
+        // }
+        // ---------- Тест ----------
+
+        let sources = [
+            "https://en.js.cx/images-load/1.jpg",
+            "https://en.js.cx/images-load/2.jpg",
+            "https://en.js.cx/images-load/3.jpg"
+        ];
+
+        // додайте випадкові символи, щоб запобігти кешуванню браузера
+        for (let i = 0; i < sources.length; i++) {
+            sources[i] += '?' + Math.random();
+        }
+
+        // для кожного зображення,
+        // створімо інший img з тим же src і перевіримо, чи маємо його ширину відразу
+        function testLoaded() {
+            let widthSum = 0;
+            for (let i = 0; i < sources.length; i++) {
+                let img = document.createElement('img');
+                img.src = sources[i];
+                widthSum += img.width;
+            }
+            alert(widthSum);
+        }
+
+        // кожне зображення має розмір 100x100, загальна ширина повинна бути 300
+        preloadImages(sources, testLoaded);
+    </script>
+
+</body>
+
+</html>
