@@ -3,27 +3,46 @@
 <script src="test.js"></script>
 <script>
 
-  function concat(arrays) {
-    if (arrays.length == 0 || arrays == undefined) return new Uint8Array([]);
-    const arr = [
-        Array.from(arrays[0]),
-        Array.from(arrays[1]),
-        Array.from(arrays[2])
+    function concat(arrays) {
+        if (arrays.length == 0 || arrays == undefined) return new Uint8Array([]);
+        const arr = [
+            Array.from(arrays[0]),
+            Array.from(arrays[1]),
+            Array.from(arrays[2])
+        ];
+        const arraysSum = arr[0].concat(arr[1].concat(arr[2]));
+        return new Uint8Array(arraysSum);
+
+        // рішення javascript.info:
+
+        // сума довжин всіх масивів
+        // let totalLength = arrays.reduce((acc, value) => acc + value.length, 0);
+
+        // let result = new Uint8Array(totalLength);
+
+        // if (!arrays.length) return result;
+
+        // // копіюємо кожний масив в result
+        // // наступний масив буде скопійовано одразу після попереднього
+        // let length = 0;
+        // for (let array of arrays) {
+        //     result.set(array, length);
+        //     length += array.length;
+        // }
+
+        // return result;
+    }
+
+    let chunks = [
+        new Uint8Array([0, 1, 2]),
+        new Uint8Array([3, 4, 5]),
+        new Uint8Array([6, 7, 8])
     ];
-    const arraysSum = arr[0].concat(arr[1].concat(arr[2]));  
-    return new Uint8Array(arraysSum)
-  }
-  
-  let chunks = [
-    new Uint8Array([0, 1, 2]),
-    new Uint8Array([3, 4, 5]),
-    new Uint8Array([6, 7, 8])
-  ];
-  
-  
-  console.log(Array.from(concat(chunks))); // 0, 1, 2, 3, 4, 5, 6, 7, 8
-  
-  console.log(concat(chunks).constructor.name); // Uint8Array
+
+
+    console.log(Array.from(concat(chunks))); // 0, 1, 2, 3, 4, 5, 6, 7, 8
+
+    console.log(concat(chunks).constructor.name); // Uint8Array
 
 </script>
 
