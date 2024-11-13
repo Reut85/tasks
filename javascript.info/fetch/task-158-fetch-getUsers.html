@@ -1,0 +1,63 @@
+<!doctype html>
+<script src="https://uk.js.cx/test/libs.js"></script>
+<script src="test.js"></script>
+<script>
+
+    async function getUsers(names) {
+        /* your code */
+
+        let dataArray = [];
+        for (let name of names) {
+            let response = await fetch(`https://api.github.com/users/${name}`);
+            if (!response.ok) {
+                dataArray.push(null);
+            }
+            let userDetails = await response.json();
+            dataArray.push(userDetails)
+        }
+        return dataArray;
+    }
+
+    // рішення javascript.info із коментарем:
+
+    // async function getUsers(names) {
+    //     let jobs = [];
+
+    //     for (let name of names) {
+    //         let job = fetch(`https://api.github.com/users/${name}`).then(
+    //             successResponse => {
+    //                 if (successResponse.status != 200) {
+    //                     return null;
+    //                 } else {
+    //                     return successResponse.json();
+    //                 }
+    //             },
+    //             failResponse => {
+    //                 return null;
+    //             }
+    //         );
+    //         jobs.push(job);
+    //     }
+
+    //     let results = await Promise.all(jobs);
+
+    //     return results;
+    // }
+
+
+    // Потрібно звернути увагу на те, що виклик.then прикріплений до fetch, 
+    // щоб коли відповідь отримана, то одразу починати зчитування даних
+    //  за допомогою.json() не очікуючи завершення інших запитів.
+
+    // Якщо, було б використано await Promise.all(names.map(name => fetch(...))) 
+    // та викликали б.json() на результатах запитів,
+    // то треба було б чекати поки закінчилися всі запити.Викликаючи.json()
+    //  одразу після кожного fetch, ми добились того, 
+    //  що зчитування надісланих по кожному окремому запиту відбуваєся незалежно від інших запитів.
+
+    // Це приклад того, як відносно низько - рівневе Promise API може бути корисним, 
+    // навіть якщо ми переважно використовуємо async / await.
+
+</script>
+
+</html>
